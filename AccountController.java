@@ -4,7 +4,6 @@
  * @author Ashleigh Nelson L. Milana
  * @version Prototype
  */
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
@@ -64,6 +63,9 @@ public class AccountController
         return verified;
     }
 
+    public void logout() {
+        this.user = "";
+    }
     public String getUser() {
         return this.user;
     }

@@ -2,3 +2,5 @@ test*
 temp*
 test/
 tests/
+*.class
+lib/

@@ -55,7 +55,6 @@ public class LoginSection implements ActionListener
         frame.setSize(420, 420);
         frame.setLayout(null);
         frame.setVisible(true);
-        
     }
     
     public void actionPerformed (ActionEvent e)
@@ -81,7 +80,7 @@ public class LoginSection implements ActionListener
             else 
             {
                 messageLabel.setForeground(Color.red);
-                messageLabel.setText("Incorrect Username or Password!");
+                messageLabel.setText("Incorrect credentials!");
             }
         }
     }

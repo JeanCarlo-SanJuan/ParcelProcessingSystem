@@ -11,7 +11,11 @@ public class Parcel {
         weight,
         tax_factor;
 
-    public Parcel() {
-        
+    public Parcel(String name, String desc, double price, double weight, double tax_factor) {
+        this.name = name;
+        this.description = desc;
+        this.price = price;
+        this.weight = weight;
+        this.tax_factor = tax_factor;
     }
 }
