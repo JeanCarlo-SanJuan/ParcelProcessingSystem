@@ -11,8 +11,7 @@ public class Parcel {
         weight,
         tax_factor;
 
-
-    Parcel() {
+    public Parcel() {
         
     }
 }
