@@ -3,7 +3,8 @@ import java.awt.event.ActionListener;
 import java.awt.*;
 import javax.swing.*;
 import java.lang.String;
-
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 public class LoginFrame extends JFrame{
     JButton loginButton = new JButton("Login");
     JButton resetButton = new JButton("Reset");
@@ -13,12 +14,10 @@ public class LoginFrame extends JFrame{
     JLabel passwordLabel = new JLabel("Password: ");
     JLabel messageLabel = new JLabel("Welcome!");
     
-    AccountController AC;
+    AccountController AC = new AccountController();
 
-    public LoginFrame (AccountController ac)
+    public LoginFrame ()
     {
-
-        AC = ac;
         usernameLabel.setBounds(50, 100, 75, 25);
         passwordLabel.setBounds(50, 150, 75, 25);
         
@@ -36,16 +35,25 @@ public class LoginFrame extends JFrame{
                 String name = usernameField.getText();
                 String phrase = String.valueOf(passwordField.getPassword());
                 
-                if (AC.login(name, phrase)) {
-                    messageLabel.setForeground(Color.blue);
-                    messageLabel.setText("Sign In Successful!");
-                    LoginFrame.this.dispose(); //Control is returned to the Main class
-                }
-                else 
-                {
+                if (!AC.login(name, phrase)) {
                     messageLabel.setForeground(Color.red);
                     messageLabel.setText("Incorrect credentials!");
+                    return;
                 }
+
+                messageLabel.setForeground(Color.blue);
+                messageLabel.setText("Sign In Successful!");
+                LoginFrame.this.setVisible(false);
+                MainFrame mainFrame = new MainFrame();
+
+                mainFrame.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        LoginFrame.this.setVisible(true);
+                        resetFields();
+                    }
+                });
+                mainFrame.setVisible(true);
             }
         });
         
@@ -54,8 +62,7 @@ public class LoginFrame extends JFrame{
         resetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                usernameField.setText("");
-                passwordField.setText("");
+               resetFields();
             }
         });
         
@@ -69,7 +76,10 @@ public class LoginFrame extends JFrame{
         this.setSize(420, 420);
         this.setLayout(null);
         this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public void resetFields() {
+        usernameField.setText("");
+        passwordField.setText("");
     }
 }

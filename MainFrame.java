@@ -5,6 +5,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JButton;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MainFrame extends JFrame {
 	private JPanel mainPane;
@@ -47,6 +49,13 @@ public class MainFrame extends JFrame {
 		JButton btn_b = new JButton("LOG OUT");
 		btn_b.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btn_b.setBounds(1000, 300, 200, 100);
+		btn_b.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainFrame.this.dispose();
+			}
+		});
 		mainPane.add(btn_b);
 	}
 }
