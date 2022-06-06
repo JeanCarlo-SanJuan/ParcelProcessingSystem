@@ -76,6 +76,8 @@ public class LoginFrame extends JFrame{
         this.setSize(420, 420);
         this.setLayout(null);
         this.setVisible(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setTitle("Login");
     }
 
     public void resetFields() {
