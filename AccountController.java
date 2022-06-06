@@ -14,7 +14,8 @@ public class AccountController
     HashMap <String, String> credentials = new HashMap <String, String>();
     private final String database_path = ".\\account.db";
     private String user = "";
-    
+    private final String seperator = "   ";
+
     public AccountController()
     {
         initDefaults();
@@ -37,7 +38,7 @@ public class AccountController
             } catch (Exception e) {
                 break;
             }
-            String[] parts = line.split("   ");
+            String[] parts = line.split(seperator);
             if (parts.length != 2) 
                 continue;
 
