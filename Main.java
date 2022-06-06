@@ -4,11 +4,10 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class Main {
-    private static AccountController ac = new AccountController();
+    private static AccountController ac = new AccountController(); // Global variable for easy access.
     private static States state = States.login;
     private static JFrame currentFrame;
 
-    // Global variable because the name field will be used later
     public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -49,15 +48,14 @@ public class Main {
         currentFrame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
-                // your code
                 nextState(state);
             }
         });
         currentFrame.setVisible(true);
     }
-
-    static void nextState(States s) {
-        switch(s) {
+    
+    static void nextState(States currentState) {
+        switch(currentState) {
             case login:
                 if (ac.getUser() != "") {
                     setState(States.main);
