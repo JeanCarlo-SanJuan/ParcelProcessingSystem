@@ -46,16 +46,16 @@ public class MainFrame extends JFrame {
 		btn_a.setBounds(1000, 120, 200, 100);
 		mainPane.add(btn_a);
 
-		JButton btn_b = new JButton("LOG OUT");
-		btn_b.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btn_b.setBounds(1000, 300, 200, 100);
-		btn_b.addActionListener(new ActionListener() {
+		JButton btn_logout = new JButton("LOG OUT");
+		btn_logout.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btn_logout.setBounds(1000, 300, 200, 100);
+		btn_logout.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				MainFrame.this.dispose();
 			}
 		});
-		mainPane.add(btn_b);
+		mainPane.add(btn_logout);
 	}
 }

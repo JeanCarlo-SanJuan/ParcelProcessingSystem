@@ -14,6 +14,13 @@ public class AccountController
     HashMap <String, String> credentials = new HashMap <String, String>();
     private final String database_path = ".\\account.db";
     private String user = "";
+    
+    public AccountController()
+    {
+        initDefaults();
+        getAccountsFromDB();
+    }
+
     private void getAccountsFromDB() {
         File f = new File(database_path);
         Scanner sc;
@@ -45,11 +52,6 @@ public class AccountController
         credentials.put("Ashleigh", "ANM");
         credentials.put("Jean", "JCSJ");
         credentials.put("Earl", "LET");
-    }
-    public AccountController()
-    {
-        initDefaults();
-        getAccountsFromDB();
     }
 
     public boolean login(String name, String phrase) {
