@@ -8,13 +8,17 @@ public class ParcelFrame extends JFrame {
 
     private String[] senderAddressLines = new String[4];
     private String[] recipientAddressLines = new String[4];
-    private String parcelName;
-    private String parcelRemarks;
-    private double parcelPrice;
-    private double parcelWeight;
-    private double parcelLength;
-    private double parcelWidth;
-    private double parcelHeight;
+    private String 
+        parcelName,
+        parcelRemarks;
+
+    private Double
+        parcelPrice,
+        parcelWeight,
+        parcelLength,
+        parcelWidth,
+        parcelHeight;
+
     private String parcelType;
     private boolean parcelTaxable = true;
     private boolean parcelPerishable = true;
@@ -23,11 +27,13 @@ public class ParcelFrame extends JFrame {
     private JTextField[] recipientAddressFields = new JTextField[4];
     private JTextField parcelNameTextField;
     private JTextArea parcelRemarksTextArea;
-    private JSpinner valueSpinner;
-    private JSpinner weightSpinner;
-    private JSpinner lengthSpinner;
-    private JSpinner widthSpinner;
-    private JSpinner heightSpinner;
+    
+    private JSpinner 
+        valueSpinner,
+        weightSpinner,
+        lengthSpinner,
+        widthSpinner,
+         heightSpinner;
 
     class TypeHandler implements ActionListener {
         public void actionPerformed(ActionEvent evt) {
