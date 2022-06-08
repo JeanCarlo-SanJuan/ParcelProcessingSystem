@@ -116,45 +116,45 @@ public class ParcelFrame extends JFrame {
         JPanel fieldsPanel = new JPanel();
         fieldsPanel.setLayout(new BoxLayout(fieldsPanel, BoxLayout.PAGE_AXIS));
 
-        JPanel itemNamePanel = new JPanel(new GridLayout(2, 0));
-        itemNamePanel.setAlignmentX(Container.LEFT_ALIGNMENT);
-        itemNamePanel.add(new JLabel("Item Name"));
-        itemNamePanel.add(new JTextField());
-        fieldsPanel.add(itemNamePanel);
+        JPanel parcelNamePanel = new JPanel(new GridLayout(2, 0));
+        parcelNamePanel.setAlignmentX(Container.LEFT_ALIGNMENT);
+        parcelNamePanel.add(new JLabel("Parcel Name"));
+        parcelNamePanel.add(new JTextField());
+        fieldsPanel.add(parcelNamePanel);
 
-        JPanel itemValuePanel = new JPanel(new GridLayout(2, 0));
-        itemValuePanel.setAlignmentX(Container.LEFT_ALIGNMENT);
-        itemValuePanel.add(new JLabel("Item Value in PHP"));
-        itemValuePanel.add(new JTextField());
-        fieldsPanel.add(itemValuePanel);
+        JPanel parcelValuePanel = new JPanel(new GridLayout(2, 0));
+        parcelValuePanel.setAlignmentX(Container.LEFT_ALIGNMENT);
+        parcelValuePanel.add(new JLabel("Parcel Value in PHP"));
+        parcelValuePanel.add(new JTextField());
+        fieldsPanel.add(parcelValuePanel);
 
-        JPanel itemWeightPanel = new JPanel(new GridLayout(2, 0));
-        itemWeightPanel.setAlignmentX(Container.LEFT_ALIGNMENT);
-        itemWeightPanel.add(new JLabel("Item Weight in KG"));
-        itemWeightPanel.add(new JTextField());
-        fieldsPanel.add(itemWeightPanel);
+        JPanel parcelWeightPanel = new JPanel(new GridLayout(2, 0));
+        parcelWeightPanel.setAlignmentX(Container.LEFT_ALIGNMENT);
+        parcelWeightPanel.add(new JLabel("Parcel Weight in KG"));
+        parcelWeightPanel.add(new JTextField());
+        fieldsPanel.add(parcelWeightPanel);
 
-        JPanel itemDimensionsPanel = new JPanel(new GridLayout(2, 0));
-        itemDimensionsPanel.setAlignmentX(Container.LEFT_ALIGNMENT);
-        itemDimensionsPanel.add(new JLabel("Item Dimensions in CM (Length, Width, Height)"));
-        JPanel itemDimensionsFieldPanel = new JPanel(new GridLayout(0, 3, 10, 10));
-        itemDimensionsFieldPanel.add(new JTextField());
-        itemDimensionsFieldPanel.add(new JTextField());
-        itemDimensionsFieldPanel.add(new JTextField());
-        itemDimensionsPanel.add(itemDimensionsFieldPanel);
-        fieldsPanel.add(itemDimensionsPanel);
+        JPanel parcelDimensionsPanel = new JPanel(new GridLayout(2, 0));
+        parcelDimensionsPanel.setAlignmentX(Container.LEFT_ALIGNMENT);
+        parcelDimensionsPanel.add(new JLabel("Parcel Dimensions in CM (Length, Width, Height)"));
+        JPanel parcelDimensionsFieldPanel = new JPanel(new GridLayout(0, 3, 10, 10));
+        parcelDimensionsFieldPanel.add(new JTextField());
+        parcelDimensionsFieldPanel.add(new JTextField());
+        parcelDimensionsFieldPanel.add(new JTextField());
+        parcelDimensionsPanel.add(parcelDimensionsFieldPanel);
+        fieldsPanel.add(parcelDimensionsPanel);
 
-        JPanel itemRemarksPanel = new JPanel();
-        itemRemarksPanel.setLayout(new BoxLayout(itemRemarksPanel, BoxLayout.PAGE_AXIS));
-        JLabel itemRemarksLabel = new JLabel("Item Remarks");
-        itemRemarksLabel.setAlignmentX(Container.LEFT_ALIGNMENT);
-        itemRemarksPanel.add(itemRemarksLabel);
-        JTextArea itemRemarksTextArea = new JTextArea();
-        itemRemarksTextArea.setAlignmentX(Container.LEFT_ALIGNMENT);
-        itemRemarksTextArea.setLineWrap(true);
-        itemRemarksTextArea.setRows(10);
-        itemRemarksPanel.add(itemRemarksTextArea);
-        fieldsPanel.add(itemRemarksPanel);
+        JPanel parcelRemarksPanel = new JPanel();
+        parcelRemarksPanel.setLayout(new BoxLayout(parcelRemarksPanel, BoxLayout.PAGE_AXIS));
+        JLabel parcelRemarksLabel = new JLabel("Parcel Remarks");
+        parcelRemarksLabel.setAlignmentX(Container.LEFT_ALIGNMENT);
+        parcelRemarksPanel.add(parcelRemarksLabel);
+        JTextArea parcelRemarksTextArea = new JTextArea();
+        parcelRemarksTextArea.setAlignmentX(Container.LEFT_ALIGNMENT);
+        parcelRemarksTextArea.setLineWrap(true);
+        parcelRemarksTextArea.setRows(10);
+        parcelRemarksPanel.add(parcelRemarksTextArea);
+        fieldsPanel.add(parcelRemarksPanel);
 
         whereTo.add(fieldsPanel, BorderLayout.PAGE_START);
     }
