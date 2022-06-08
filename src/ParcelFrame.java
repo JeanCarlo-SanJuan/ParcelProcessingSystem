@@ -124,22 +124,32 @@ public class ParcelFrame extends JFrame {
         JPanel parcelValuePanel = new JPanel(new GridLayout(2, 0));
         parcelValuePanel.setAlignmentX(Container.LEFT_ALIGNMENT);
         parcelValuePanel.add(new JLabel("Parcel Value in PHP"));
-        parcelValuePanel.add(new JTextField());
+        SpinnerNumberModel valueModel = new SpinnerNumberModel(0, 0, 100000, 1);
+        JSpinner valueSpinner = new JSpinner(valueModel);
+        parcelValuePanel.add(valueSpinner);
         fieldsPanel.add(parcelValuePanel);
 
         JPanel parcelWeightPanel = new JPanel(new GridLayout(2, 0));
         parcelWeightPanel.setAlignmentX(Container.LEFT_ALIGNMENT);
         parcelWeightPanel.add(new JLabel("Parcel Weight in KG"));
-        parcelWeightPanel.add(new JTextField());
+        SpinnerNumberModel weightModel = new SpinnerNumberModel(0, 0, 20, 1);
+        JSpinner weightSpinner = new JSpinner(weightModel);
+        parcelWeightPanel.add(weightSpinner);
         fieldsPanel.add(parcelWeightPanel);
 
         JPanel parcelDimensionsPanel = new JPanel(new GridLayout(2, 0));
         parcelDimensionsPanel.setAlignmentX(Container.LEFT_ALIGNMENT);
         parcelDimensionsPanel.add(new JLabel("Parcel Dimensions in CM (Length, Width, Height)"));
         JPanel parcelDimensionsFieldPanel = new JPanel(new GridLayout(0, 3, 10, 10));
-        parcelDimensionsFieldPanel.add(new JTextField());
-        parcelDimensionsFieldPanel.add(new JTextField());
-        parcelDimensionsFieldPanel.add(new JTextField());
+        SpinnerNumberModel lengthModel = new SpinnerNumberModel(0, 0, 30, 1);
+        JSpinner lengthSpinner = new JSpinner(lengthModel);
+        SpinnerNumberModel widthModel = new SpinnerNumberModel(0, 0, 30, 1);
+        JSpinner widthSpinner = new JSpinner(widthModel);
+        SpinnerNumberModel heightModel = new SpinnerNumberModel(0, 0, 30, 1);
+        JSpinner heightSpinner = new JSpinner(heightModel);
+        parcelDimensionsFieldPanel.add(lengthSpinner);
+        parcelDimensionsFieldPanel.add(widthSpinner);
+        parcelDimensionsFieldPanel.add(heightSpinner);
         parcelDimensionsPanel.add(parcelDimensionsFieldPanel);
         fieldsPanel.add(parcelDimensionsPanel);
 
