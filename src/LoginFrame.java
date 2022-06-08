@@ -17,7 +17,7 @@ public class LoginFrame extends JFrame{
     AccountController AC = new AccountController();
 
     public LoginFrame ()
-    {
+    {   
         usernameLabel.setBounds(50, 100, 75, 25);
         passwordLabel.setBounds(50, 150, 75, 25);
         
