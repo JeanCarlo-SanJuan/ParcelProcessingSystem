@@ -48,7 +48,6 @@ public class MainFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ParcelFrame frame = new ParcelFrame();
-				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.setPreferredSize(new Dimension(720, 720));
 				frame.pack();
 				frame.setVisible(true);
