@@ -4,3 +4,7 @@ test/
 tests/
 *.class
 lib/
+*.png
+*.ai
+bin/
+.vscode

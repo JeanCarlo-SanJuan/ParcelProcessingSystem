@@ -10,7 +10,6 @@ public class ContactData{
     country_code,
     phone_number; */
 
-    private Window w;
     //public final Date date;
     private static final String[] s_fields= {
         "Name",
@@ -22,16 +21,4 @@ public class ContactData{
         "Phone Number"
     };
     private JTextField[] fields = new JTextField[s_fields.length];
-
-    ContactData() {
-        int y = 50;
-        w = new Window();
-        for (int i = 0; i < s_fields.length; i++) {
-            JTextField f = new JTextField(s_fields[i]);
-            f.setBounds(50, y + i * y, 200, 30);
-            fields[i] = f;
-            w.add(f);
-        }
-        w.paint();
-    }
 }

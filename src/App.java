@@ -1,7 +1,7 @@
 import javax.swing.JFrame;
 import java.awt.EventQueue;
 
-public class Main {
+public class App {
     private static JFrame currentFrame;
 
     public static void main(String[] args) {

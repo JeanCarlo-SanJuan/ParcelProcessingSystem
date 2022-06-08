@@ -1,5 +1,5 @@
 public class Parcel {
-    public final Dimension dimension;
+    public final Dimension3D dimension;
     public final ContactData sender, receiver;
 
     public final String 
