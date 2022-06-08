@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
@@ -16,6 +17,9 @@ public class ParcelFrame extends JFrame {
     private String parcelType;
     private boolean parcelTaxable;
     private boolean parcelPerishable;
+
+    private JTextField[] senderAddressFields = new JTextField[4];
+    private JTextField[] recipientAddressFields = new JTextField[4];
 
     public ParcelFrame() {
         initializeComponents();
@@ -51,8 +55,14 @@ public class ParcelFrame extends JFrame {
             JPanel addressLinePanel = new JPanel();
             addressLinePanel.setLayout(new BoxLayout(addressLinePanel, BoxLayout.LINE_AXIS));
             addressLinePanel.add(new JLabel("Line " + line + ": "));
-            addressLinePanel.add(new JTextField(25));
+            JTextField addressLineField = new JTextField(25);
+            addressLinePanel.add(addressLineField);
             addressPanel.add(addressLinePanel);
+            if (titleText == "Sender") {
+                senderAddressFields[line - 1] = addressLineField;
+            } else if (titleText == "Receiver") {
+                recipientAddressFields[line - 1] = addressLineField;
+            }
         }
         whereTo.add(addressPanel);
     }
@@ -184,6 +194,14 @@ public class ParcelFrame extends JFrame {
         JPanel buttonPanel = new JPanel();
 
         JButton classifyButton = new JButton("Classify");
+        classifyButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                    for (int i = 0; i < 4; i++) {
+                        senderAddressLines[i] = senderAddressFields[i].getText();
+                        recipientAddressLines[i] = recipientAddressFields[i].getText();
+                    }
+                }
+            });
         classifyButton.setPreferredSize(new Dimension(175, 40));
         buttonPanel.add(classifyButton);
 
