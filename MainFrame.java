@@ -3,9 +3,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-
-
-import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
@@ -40,21 +37,10 @@ public class MainFrame extends JFrame {
 		lbl_b.setBounds(40, 300, 460, 50);
 		mainPane.add(lbl_b);
 
-		JButton btn_add_parcel = new JButton("NEW PARCEL");
-		btn_add_parcel.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btn_add_parcel.setBounds(1000, 120, 200, 100);
-		btn_add_parcel.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				ParcelFrame frame = new ParcelFrame();
-				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				frame.setPreferredSize(new Dimension(720, 720));
-				frame.pack();
-				frame.setVisible(true);
-			}
-		});
-		mainPane.add(btn_add_parcel);
+		JButton btn_a = new JButton("NEW PARCEL");
+		btn_a.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btn_a.setBounds(1000, 120, 200, 100);
+		mainPane.add(btn_a);
 
 		JButton btn_logout = new JButton("LOG OUT");
 		btn_logout.setFont(new Font("Tahoma", Font.BOLD, 20));
