@@ -52,7 +52,7 @@ public class ParcelFrame extends JFrame {
     }
 
     private void initializeComponents() {
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        // setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(800, 600));
 
         getContentPane().setLayout(new GridLayout(0, 2, GAPS, GAPS));
@@ -286,6 +286,8 @@ public class ParcelFrame extends JFrame {
                     System.out.println("Parcel Length: " + parcelLength);
                     System.out.println("Parcel Width: " + parcelWidth);
                     System.out.println("Parcel Height: " + parcelHeight);
+                    JOptionPane.showMessageDialog(self, "Finished classifying parcel.", "Information", JOptionPane.INFORMATION_MESSAGE);
+                    self.dispatchEvent(new WindowEvent(self, WindowEvent.WINDOW_CLOSING));
                 }
             });
         classifyButton.setPreferredSize(new Dimension(175, 40));
