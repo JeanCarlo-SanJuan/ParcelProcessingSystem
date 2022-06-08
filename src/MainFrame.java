@@ -68,14 +68,14 @@ public class MainFrame extends JFrame {
 		});
 		mainPane.add(btn_logout);
 		
-		JButton btn_c = new JButton("Delivery Request");
-		btn_c.setFont(new Font("Tahoma", Font.BOLD, 19));
-		btn_c.setBounds(1000, 380, 200, 80);
-		mainPane.add(btn_c);
+		JButton btn_delivery = new JButton("Delivery Request");
+		btn_delivery.setFont(new Font("Tahoma", Font.BOLD, 19));
+		btn_delivery.setBounds(1000, 380, 200, 80);
+		mainPane.add(btn_delivery);
 
-		JButton btn_d = new JButton("Parcel Info");
-		btn_d.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btn_d.setBounds(1000, 500, 200, 80);
-		mainPane.add(btn_d);
+		JButton btn_info = new JButton("Parcel Info");
+		btn_info.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btn_info.setBounds(1000, 500, 200, 80);
+		mainPane.add(btn_info);
 	}
 }
