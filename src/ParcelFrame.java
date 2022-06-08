@@ -89,6 +89,6 @@ public class ParcelFrame extends JFrame {
                     }
                 }
 
-            });
+        });
     }
 }
