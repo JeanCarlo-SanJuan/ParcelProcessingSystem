@@ -33,7 +33,7 @@ public class ParcelFrame extends JFrame {
         weightSpinner,
         lengthSpinner,
         widthSpinner,
-         heightSpinner;
+        heightSpinner;
 
     class TypeHandler implements ActionListener {
         public void actionPerformed(ActionEvent evt) {

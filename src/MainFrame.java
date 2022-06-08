@@ -61,10 +61,10 @@ public class MainFrame extends JFrame {
         btn_delivery.setFont(new Font("Tahoma", Font.BOLD, 19));
         btn_delivery.setBounds(1000, 360, 200, 80);
         btn_delivery.addActionListener(new ActionListener() {
-            
+
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
             }
         });
         mainPane.add(btn_delivery);
@@ -73,10 +73,10 @@ public class MainFrame extends JFrame {
         btn_info.setFont(new Font("Tahoma", Font.BOLD, 20));
         btn_info.setBounds(1000, 480, 200, 80);
         btn_info.addActionListener(new ActionListener() {
-           
+
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
             }
         });
         mainPane.add(btn_info);
