@@ -1,5 +1,5 @@
 /**
- * An immutable class for a dimension similar to the one provided by java.awt but includes a 3D dimension
+ * An immutable class for a dimension similar to the one provided by java.awt but includes a third dimension
  */
 public class Dimension3D {
     public final double length;
