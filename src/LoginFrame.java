@@ -14,10 +14,11 @@ public class LoginFrame extends JFrame{
     JLabel passwordLabel = new JLabel("Password: ");
     JLabel messageLabel = new JLabel("Welcome!");
     
-    AccountController AC = new AccountController();
+    private AccountController AC;
 
-    public LoginFrame ()
+    public LoginFrame (AccountController ac)
     {   
+        this.AC = ac;
         usernameLabel.setBounds(50, 100, 75, 25);
         passwordLabel.setBounds(50, 150, 75, 25);
         
