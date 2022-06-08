@@ -11,21 +11,48 @@ public class ParcelFrame extends JFrame {
     private String parcelName;
     private String parcelRemarks;
     private double parcelPrice;
+    private double parcelWeight;
     private double parcelLength;
     private double parcelWidth;
     private double parcelHeight;
     private String parcelType;
-    private boolean parcelTaxable;
-    private boolean parcelPerishable;
+    private boolean parcelTaxable = true;
+    private boolean parcelPerishable = true;
 
     private JTextField[] senderAddressFields = new JTextField[4];
     private JTextField[] recipientAddressFields = new JTextField[4];
+    private JTextField parcelNameTextField;
+    private JTextArea parcelRemarksTextArea;
+    private JSpinner valueSpinner;
+    private JSpinner weightSpinner;
+    private JSpinner lengthSpinner;
+    private JSpinner widthSpinner;
+    private JSpinner heightSpinner;
+
+    class TypeHandler implements ActionListener {
+        public void actionPerformed(ActionEvent evt) {
+            parcelType = evt.getActionCommand();
+        }
+    }
+
+    class TaxableHandler implements ActionListener {
+        public void actionPerformed(ActionEvent evt) {
+            parcelTaxable = evt.getActionCommand() == "Yes";
+        }
+    }
+
+    class PerishableHandler implements ActionListener {
+        public void actionPerformed(ActionEvent evt) {
+            parcelPerishable = evt.getActionCommand() == "Yes";
+        }
+    }
 
     public ParcelFrame() {
         initializeComponents();
     }
 
     private void initializeComponents() {
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(800, 600));
 
         getContentPane().setLayout(new GridLayout(0, 2, GAPS, GAPS));
@@ -78,10 +105,13 @@ public class ParcelFrame extends JFrame {
         typePanel.setLayout(new BoxLayout(typePanel, BoxLayout.PAGE_AXIS));
         typePanel.add(Box.createVerticalGlue());
         typePanel.add(new JLabel("Type"));
+        TypeHandler typeHandler = new TypeHandler();
         JRadioButton typeMailButton = new JRadioButton("Mail");
+        typeMailButton.addActionListener(typeHandler);
         typePanel.add(typeMailButton);
         typeButtons.add(typeMailButton);
         JRadioButton typeItemButton = new JRadioButton("Item");
+        typeItemButton.addActionListener(typeHandler);
         typePanel.add(typeItemButton);
         typeButtons.add(typeItemButton);
         typePanel.add(Box.createVerticalGlue());
@@ -94,10 +124,13 @@ public class ParcelFrame extends JFrame {
         taxablePanel.setLayout(new BoxLayout(taxablePanel, BoxLayout.PAGE_AXIS));
         taxablePanel.add(Box.createVerticalGlue());
         taxablePanel.add(new JLabel("Taxable"));
-        JRadioButton taxableYesButton = new JRadioButton("Yes");
+        TaxableHandler taxableHandler = new TaxableHandler();
+        JRadioButton taxableYesButton = new JRadioButton("Yes", true);
+        taxableYesButton.addActionListener(taxableHandler);
         taxablePanel.add(taxableYesButton);
         taxableButtons.add(taxableYesButton);
         JRadioButton taxableNoButton = new JRadioButton("No");
+        taxableNoButton.addActionListener(taxableHandler);
         taxablePanel.add(taxableNoButton);
         taxableButtons.add(taxableNoButton);
         taxablePanel.add(Box.createVerticalGlue());
@@ -110,10 +143,13 @@ public class ParcelFrame extends JFrame {
         perishablePanel.setLayout(new BoxLayout(perishablePanel, BoxLayout.PAGE_AXIS));
         perishablePanel.add(Box.createVerticalGlue());
         perishablePanel.add(new JLabel("Perishable"));
-        JRadioButton perishableYesButton = new JRadioButton("Yes");
+        PerishableHandler perishableHandler = new PerishableHandler();
+        JRadioButton perishableYesButton = new JRadioButton("Yes", true);
+        perishableYesButton.addActionListener(perishableHandler);
         perishablePanel.add(perishableYesButton);
         perishableButtons.add(perishableYesButton);
         JRadioButton perishableNoButton = new JRadioButton("No");
+        perishableNoButton.addActionListener(perishableHandler);
         perishablePanel.add(perishableNoButton);
         perishableButtons.add(perishableNoButton);
         perishablePanel.add(Box.createVerticalGlue());
@@ -140,14 +176,15 @@ public class ParcelFrame extends JFrame {
         JPanel parcelNamePanel = new JPanel(new GridLayout(2, 0));
         parcelNamePanel.setAlignmentX(Container.LEFT_ALIGNMENT);
         parcelNamePanel.add(new JLabel("Parcel Name"));
-        parcelNamePanel.add(new JTextField());
+        parcelNameTextField = new JTextField();
+        parcelNamePanel.add(parcelNameTextField);
         fieldsPanel.add(parcelNamePanel);
 
         JPanel parcelValuePanel = new JPanel(new GridLayout(2, 0));
         parcelValuePanel.setAlignmentX(Container.LEFT_ALIGNMENT);
         parcelValuePanel.add(new JLabel("Parcel Value in PHP"));
         SpinnerNumberModel valueModel = new SpinnerNumberModel(0.0, 0.0, 100000.0, 1.0);
-        JSpinner valueSpinner = new JSpinner(valueModel);
+        valueSpinner = new JSpinner(valueModel);
         parcelValuePanel.add(valueSpinner);
         fieldsPanel.add(parcelValuePanel);
 
@@ -155,7 +192,7 @@ public class ParcelFrame extends JFrame {
         parcelWeightPanel.setAlignmentX(Container.LEFT_ALIGNMENT);
         parcelWeightPanel.add(new JLabel("Parcel Weight in KG"));
         SpinnerNumberModel weightModel = new SpinnerNumberModel(0.0, 0.0, 20.0, 1.0);
-        JSpinner weightSpinner = new JSpinner(weightModel);
+        weightSpinner = new JSpinner(weightModel);
         parcelWeightPanel.add(weightSpinner);
         fieldsPanel.add(parcelWeightPanel);
 
@@ -164,11 +201,11 @@ public class ParcelFrame extends JFrame {
         parcelDimensionsPanel.add(new JLabel("Parcel Dimensions in CM (Length, Width, Height)"));
         JPanel parcelDimensionsFieldPanel = new JPanel(new GridLayout(0, 3, 10, 10));
         SpinnerNumberModel lengthModel = new SpinnerNumberModel(0.0, 0.0, 30.0, 1.0);
-        JSpinner lengthSpinner = new JSpinner(lengthModel);
+        lengthSpinner = new JSpinner(lengthModel);
         SpinnerNumberModel widthModel = new SpinnerNumberModel(0.0, 0.0, 30.0, 1.0);
-        JSpinner widthSpinner = new JSpinner(widthModel);
+        widthSpinner = new JSpinner(widthModel);
         SpinnerNumberModel heightModel = new SpinnerNumberModel(0.0, 0.0, 30.0, 1.0);
-        JSpinner heightSpinner = new JSpinner(heightModel);
+        heightSpinner = new JSpinner(heightModel);
         parcelDimensionsFieldPanel.add(lengthSpinner);
         parcelDimensionsFieldPanel.add(widthSpinner);
         parcelDimensionsFieldPanel.add(heightSpinner);
@@ -180,7 +217,7 @@ public class ParcelFrame extends JFrame {
         JLabel parcelRemarksLabel = new JLabel("Parcel Remarks");
         parcelRemarksLabel.setAlignmentX(Container.LEFT_ALIGNMENT);
         parcelRemarksPanel.add(parcelRemarksLabel);
-        JTextArea parcelRemarksTextArea = new JTextArea();
+        parcelRemarksTextArea = new JTextArea();
         parcelRemarksTextArea.setAlignmentX(Container.LEFT_ALIGNMENT);
         parcelRemarksTextArea.setLineWrap(true);
         parcelRemarksTextArea.setRows(10);
@@ -194,12 +231,61 @@ public class ParcelFrame extends JFrame {
         JPanel buttonPanel = new JPanel();
 
         JButton classifyButton = new JButton("Classify");
+        JFrame self = this;
         classifyButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
                     for (int i = 0; i < 4; i++) {
-                        senderAddressLines[i] = senderAddressFields[i].getText();
-                        recipientAddressLines[i] = recipientAddressFields[i].getText();
+                        String senderText = senderAddressFields[i].getText();
+                        String recipientText = recipientAddressFields[i].getText();
+                        if (senderText.isEmpty()) {
+                            JOptionPane.showMessageDialog(self, "Sender address line " + (i + 1) + " is empty", "Warning", JOptionPane.WARNING_MESSAGE);
+                            return;
+                        }
+                        if (recipientText.isEmpty()) {
+                            JOptionPane.showMessageDialog(self, "Recipient address line " + (i + 1) + " is empty", "Warning", JOptionPane.WARNING_MESSAGE);
+                            return;
+                        }
+                        senderAddressLines[i] = senderText;
+                        recipientAddressLines[i] = recipientText;
                     }
+
+                    parcelName = parcelNameTextField.getText();
+                    if (parcelName.isEmpty()) {
+                        JOptionPane.showMessageDialog(self, "Parcel name cannot be empty", "Warning", JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+                    parcelRemarks = parcelRemarksTextArea.getText();
+                    parcelPrice = (double) valueSpinner.getValue();
+                    parcelWeight = (double) weightSpinner.getValue();
+                    parcelLength = (double) lengthSpinner.getValue();
+                    parcelWidth = (double) widthSpinner.getValue();
+                    parcelHeight = (double) heightSpinner.getValue();
+
+                    if (parcelType == null) {
+                        JOptionPane.showMessageDialog(self, "No parcel type selected", "Warning", JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+
+                    // TODO: replace this with controller code
+
+                    System.out.println("Sender");
+                    for (int i = 0; i < 4; i++) {
+                        System.out.println("Line " + (i + 1) + ": " + senderAddressLines[i]);
+                    }
+                    System.out.println("Receiver");
+                    for (int i = 0; i < 4; i++) {
+                        System.out.println("Line " + (i + 1) + ": " + recipientAddressLines[i]);
+                    }
+                    System.out.println("Type: " + parcelType);
+                    System.out.println("Taxable: " + parcelTaxable);
+                    System.out.println("Perishable: " + parcelPerishable);
+                    System.out.println("Parcel Name: " + parcelName);
+                    System.out.println("Parcel Remarks: " + parcelRemarks);
+                    System.out.println("Parcel Price: " + parcelPrice);
+                    System.out.println("Parcel Weight: " + parcelWeight);
+                    System.out.println("Parcel Length: " + parcelLength);
+                    System.out.println("Parcel Width: " + parcelWidth);
+                    System.out.println("Parcel Height: " + parcelHeight);
                 }
             });
         classifyButton.setPreferredSize(new Dimension(175, 40));
