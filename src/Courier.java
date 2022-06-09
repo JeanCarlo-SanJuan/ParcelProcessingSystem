@@ -2,8 +2,8 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Courier {
-    private Delivery delivery;
-    private Parcel parcel;
+    public Delivery delivery;
+    public final Parcel parcel;
     private Date startTime = new Date();
     private final int SECOND = 1000;
     public Courier(Parcel p, Delivery d) {
