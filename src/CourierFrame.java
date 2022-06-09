@@ -73,7 +73,7 @@ public class CourierFrame extends JFrame {
         
         gc.gridx=2;
         gc.gridy=2;
-        JLabel info3 = new JLabel("" + courier.delivery.mode);
+        JLabel info3 = new JLabel("" + courier.delivery.getMode());
         info3.setOpaque(true);
         info3.setHorizontalAlignment(SwingConstants.CENTER);
         info3.setVerticalAlignment(SwingConstants.NORTH);
