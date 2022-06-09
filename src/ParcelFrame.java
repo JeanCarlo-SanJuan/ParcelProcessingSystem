@@ -174,13 +174,16 @@ public class ParcelFrame extends JFrame {
         radioPanel.add(Box.createHorizontalGlue());
 
         whereTo.add(radioPanel);
+
     }
 
     private void createRightPanel() {
         this.rightPanel = new JPanel(new BorderLayout());
 
         createRightFields(rightPanel);
-        createFinishButtons(rightPanel);
+
+        if (template == null)
+            createFinishButtons(rightPanel);
 
         add(rightPanel);
     }
