@@ -21,7 +21,7 @@ public class Parcel {
         //Do nothing
     }
 
-    public Parcel(String name, String desc, double price, double weight, double tax_factor, Dimension3D dimension3d, Addresses sender, Addresses receiver) {
+    public Parcel(String name, String desc, double price, double weight, double tax_factor, Dimension3D dimension3d, Addresses sender, Addresses receiver, boolean isTaxable, boolean isPerishable) {
         this.name = name;
         this.description = desc;
         this.price = price;
@@ -30,6 +30,8 @@ public class Parcel {
         this.dimension = dimension3d;
         this.sender = sender;
         this.receiver = receiver;
+        this.isTaxable = isTaxable;
+        this.isPerishable =isPerishable;
     }
 
     static Parcel sample() {
@@ -39,7 +41,8 @@ public class Parcel {
             "Sample", "a sample parcel", 
             100.0, 15.0, 0.0, 
             new Dimension3D(10, 10, 10),
-            new Addresses(ss), new Addresses(rs)
+            new Addresses(ss), new Addresses(rs), 
+            false, false
         );
     }
 }

@@ -82,9 +82,9 @@ public class MainFrame extends JFrame {
         });
         rightPanel.add(newParcelButton);
 
-        var statusButton = new JButton("Delivery Status");
-        statusButton.setFont(new Font("Tahoma", Font.BOLD, 20));
-        statusButton.addActionListener(new ActionListener() {
+        var infoButton = new JButton("Parcel Info");
+        infoButton.setFont(new Font("Tahoma", Font.BOLD, 20));
+        infoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String maybeID = buttonsGroup.getSelection().getActionCommand();
                 
@@ -99,15 +99,6 @@ public class MainFrame extends JFrame {
                     courierController, p);
                
                 frame.setVisible(true);
-            }
-        });
-        rightPanel.add(statusButton);
-
-        var infoButton = new JButton("Parcel Info");
-        infoButton.setFont(new Font("Tahoma", Font.BOLD, 20));
-        infoButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-
             }
         });
         rightPanel.add(infoButton);
