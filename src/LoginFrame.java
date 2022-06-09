@@ -8,7 +8,7 @@ import java.awt.event.WindowEvent;
 
 public class LoginFrame extends JFrame implements ActionListener {
     private JButton loginButton = new JButton("Login");
-    private JButton clearButton = new JButton("Reset");
+    private JButton resetButton = new JButton("Reset");
     private JTextField usernameField = new JTextField();
     private JPasswordField passwordField = new JPasswordField();
     private JLabel usernameLabel = new JLabel("Username: ");
@@ -33,17 +33,17 @@ public class LoginFrame extends JFrame implements ActionListener {
         loginButton.addActionListener(this);
         loginButton.setActionCommand("login");
 
-        clearButton.setBounds(225, 200, 100, 25);
-        clearButton.setFocusable(false);
-        clearButton.addActionListener(this);
-        clearButton.setActionCommand("clear");
+        resetButton.setBounds(225, 200, 100, 25);
+        resetButton.setFocusable(false);
+        resetButton.addActionListener(this);
+        resetButton.setActionCommand("reset");
         add(usernameLabel);
         add(passwordLabel);
         add(messageLabel);
         add(usernameField);
         add(passwordField);
         add(loginButton);
-        add(clearButton);
+        add(resetButton);
         setSize(420, 420);
         setLayout(null);
         setVisible(true);
@@ -93,7 +93,7 @@ public class LoginFrame extends JFrame implements ActionListener {
                     onLoginFail();
                 }
             break;
-            case "clear":
+            case "reset":
                 clearFields();
             break;
             default:
