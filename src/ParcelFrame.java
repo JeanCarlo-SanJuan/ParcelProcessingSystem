@@ -16,6 +16,13 @@ public class ParcelFrame extends JFrame {
     private JTextField[] recipientAddressFields = new JTextField[4];
     private JTextField parcelNameTextField;
     private JTextArea parcelRemarksTextArea;
+    private JRadioButton
+        typeMailButton,
+        typeItemButton,
+        taxableYesButton,
+        taxableNoButton,
+        perishableYesButton,
+        perishableNoButton;
 
     private JPanel centerPanel;
     private JPanel rightPanel;
@@ -115,11 +122,11 @@ public class ParcelFrame extends JFrame {
         typePanel.add(Box.createVerticalGlue());
         typePanel.add(new JLabel("Type"));
         TypeHandler typeHandler = new TypeHandler();
-        JRadioButton typeMailButton = new JRadioButton("Mail");
+        typeMailButton = new JRadioButton("Mail");
         typeMailButton.addActionListener(typeHandler);
         typePanel.add(typeMailButton);
         typeButtons.add(typeMailButton);
-        JRadioButton typeItemButton = new JRadioButton("Item");
+        typeItemButton = new JRadioButton("Item");
         typeItemButton.addActionListener(typeHandler);
         typePanel.add(typeItemButton);
         typeButtons.add(typeItemButton);
@@ -134,11 +141,11 @@ public class ParcelFrame extends JFrame {
         taxablePanel.add(Box.createVerticalGlue());
         taxablePanel.add(new JLabel("Taxable"));
         TaxableHandler taxableHandler = new TaxableHandler();
-        JRadioButton taxableYesButton = new JRadioButton("Yes", true);
+        taxableYesButton = new JRadioButton("Yes", true);
         taxableYesButton.addActionListener(taxableHandler);
         taxablePanel.add(taxableYesButton);
         taxableButtons.add(taxableYesButton);
-        JRadioButton taxableNoButton = new JRadioButton("No");
+        taxableNoButton = new JRadioButton("No");
         taxableNoButton.addActionListener(taxableHandler);
         taxablePanel.add(taxableNoButton);
         taxableButtons.add(taxableNoButton);
@@ -153,11 +160,11 @@ public class ParcelFrame extends JFrame {
         perishablePanel.add(Box.createVerticalGlue());
         perishablePanel.add(new JLabel("Perishable"));
         PerishableHandler perishableHandler = new PerishableHandler();
-        JRadioButton perishableYesButton = new JRadioButton("Yes", true);
+        perishableYesButton = new JRadioButton("Yes", true);
         perishableYesButton.addActionListener(perishableHandler);
         perishablePanel.add(perishableYesButton);
         perishableButtons.add(perishableYesButton);
-        JRadioButton perishableNoButton = new JRadioButton("No");
+        perishableNoButton = new JRadioButton("No");
         perishableNoButton.addActionListener(perishableHandler);
         perishablePanel.add(perishableNoButton);
         perishableButtons.add(perishableNoButton);
@@ -318,6 +325,12 @@ public class ParcelFrame extends JFrame {
         widthSpinner.setValue(parcelTemp.dimension.width);
         heightSpinner.setValue(parcelTemp.dimension.height);
 
+        if (parcelTemp.type == "Mail") {
+            typeMailButton.setSelected(true);
+        } else {
+            typeItemButton.setSelected(true);
+        }
+
         parcelNameTextField.setEnabled(false);
         parcelRemarksTextArea.setEnabled(false);
         valueSpinner.setEnabled(false);
@@ -325,6 +338,12 @@ public class ParcelFrame extends JFrame {
         lengthSpinner.setEnabled(false);
         widthSpinner.setEnabled(false);
         heightSpinner.setEnabled(false);
+        taxableYesButton.setEnabled(false);
+        taxableNoButton.setEnabled(false);
+        perishableYesButton.setEnabled(false);
+        perishableNoButton.setEnabled(false);
+        typeMailButton.setEnabled(false);
+        typeItemButton.setEnabled(false);
 
         this.leftPanel.previewID.setText(parcelTemp.parcelId);
         this.leftPanel.previewStatus.setText("" + template.checkProgress());
