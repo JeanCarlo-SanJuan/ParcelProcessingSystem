@@ -1,6 +1,9 @@
+import java.util.UUID;
+
 public class Parcel {
     public Dimension3D dimension;
     public Addresses sender, receiver;
+    public String parcelId = UUID.randomUUID().toString();
 
     public String 
         name,
