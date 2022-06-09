@@ -29,12 +29,10 @@ public class LoginFrame extends JFrame implements ActionListener {
         passwordField.setBounds(125, 150, 200, 25);
 
         loginButton.setBounds(125, 200, 100, 25);
-        loginButton.setFocusable(false);
         loginButton.addActionListener(this);
         loginButton.setActionCommand("login");
 
         resetButton.setBounds(225, 200, 100, 25);
-        resetButton.setFocusable(false);
         resetButton.addActionListener(this);
         resetButton.setActionCommand("reset");
         add(usernameLabel);
