@@ -4,6 +4,7 @@ public class Courier {
     private Delivery delivery;
     private Parcel parcel;
     private Date startTime;
+
     public Courier(Parcel p, Delivery d) {
         this.parcel = p;
         this.delivery = d;
@@ -19,7 +20,7 @@ public class Courier {
     public Status checkProgress() {
         Date cTime =  new Date();
 
-        int timePassed = cTime.compareTo(this.startTime);
+        int timePassed = cTime.compareTo(this.startTime) + 2000;
 
         //Measured in MS
         if (timePassed > 1000 && timePassed < 3000) {
@@ -33,5 +34,8 @@ public class Courier {
 
     public static void main(String[] args) {
         Courier c =  new Courier(Parcel.sample());
+        System.out.println(
+            c.checkProgress()
+        );
     }
 }

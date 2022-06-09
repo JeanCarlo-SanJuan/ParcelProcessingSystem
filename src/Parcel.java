@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Parcel {
     public final Dimension3D dimension;
     public final Addresses sender, receiver;

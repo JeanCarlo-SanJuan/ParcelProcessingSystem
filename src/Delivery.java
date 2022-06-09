@@ -1,16 +1,3 @@
-enum Mode {
-    VEHICLE,
-    BOAT,
-    AIRPLANE
-};
-
-enum Status {
-    PICKUP,
-    ON_DELIVERY,
-    DELIVERED,
-    FAIL
-}
-
 public class Delivery {
     private final Mode mode;
     private Status state;
