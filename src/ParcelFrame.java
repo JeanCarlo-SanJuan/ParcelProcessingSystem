@@ -59,7 +59,6 @@ public class ParcelFrame extends JFrame {
     }
 
     private void initializeComponents() {
-        // setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(800, 600));
 
         getContentPane().setLayout(new GridLayout(0, 2, GAPS, GAPS));
