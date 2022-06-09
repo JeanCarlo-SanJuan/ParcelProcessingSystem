@@ -7,7 +7,7 @@ public class ParcelFrame extends JFrame {
     private final int GAPS = 10;
     private final String textSender = "Sender";
     private final String textReceiver = "Receiver";
-    private final Parcel template;
+    private final Courier template;
     private Parcel parcel = new Parcel();
     private String[] senderAddressLines = new String[4];
     private String[] recipientAddressLines = new String[4];
@@ -48,7 +48,7 @@ public class ParcelFrame extends JFrame {
         }
     }
 
-    public ParcelFrame(CourierController courierController, Parcel template) {
+    public ParcelFrame(CourierController courierController, Courier template) {
         this.courierController = courierController;
         this.template = template;
         initializeComponents();
@@ -300,22 +300,23 @@ public class ParcelFrame extends JFrame {
         if (template == null)
             return;
 
+        Parcel parcelTemp = template.parcel;
         for (int i = 0; i < Addresses.requiredLen; i++) {
             JTextField t1 = this.senderAddressFields[i];
             JTextField t2 = this.recipientAddressFields[i];
-            t1.setText(template.sender.get(i)); 
-            t2.setText(template.receiver.get(i));
+            t1.setText(parcelTemp.sender.get(i)); 
+            t2.setText(parcelTemp.receiver.get(i));
             t1.setEditable(false);
             t2.setEditable(false);
         }
 
-        parcelNameTextField.setText(template.name);
-        parcelRemarksTextArea.setText(template.description);
-        valueSpinner.setValue(template.price);
-        weightSpinner.setValue(template.weight);
-        lengthSpinner.setValue(template.dimension.length);
-        widthSpinner.setValue(template.dimension.width);
-        heightSpinner.setValue(template.dimension.height);
+        parcelNameTextField.setText(parcelTemp.name);
+        parcelRemarksTextArea.setText(parcelTemp.description);
+        valueSpinner.setValue(parcelTemp.price);
+        weightSpinner.setValue(parcelTemp.weight);
+        lengthSpinner.setValue(parcelTemp.dimension.length);
+        widthSpinner.setValue(parcelTemp.dimension.width);
+        heightSpinner.setValue(parcelTemp.dimension.height);
 
         parcelNameTextField.setEnabled(false);
         parcelRemarksTextArea.setEnabled(false);
@@ -324,6 +325,10 @@ public class ParcelFrame extends JFrame {
         lengthSpinner.setEnabled(false);
         widthSpinner.setEnabled(false);
         heightSpinner.setEnabled(false);
+
+        this.leftPanel.previewID.setText(parcelTemp.parcelId);
+        this.leftPanel.previewStatus.setText("" + template.checkProgress());
+        this.leftPanel.previewMode.setText("" + template.delivery.getMode());
     }
 
     private void pushToCourierController() {

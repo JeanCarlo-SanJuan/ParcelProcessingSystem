@@ -12,10 +12,10 @@ public class CourierController {
         return new ArrayList<Courier>(couriers);
     }
 
-    public Parcel getParcelByID(String id) {
+    public Courier getCourierWithParcelID(String id) {
         for (Courier c: couriers) {
             if (c.parcel.parcelId.compareTo(id) == 0) {
-                return c.parcel;
+                return c;
             }
         }
 

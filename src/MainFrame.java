@@ -91,12 +91,12 @@ public class MainFrame extends JFrame {
                 if (maybeID == null)
                     return;
 
-                Parcel p = courierController.getParcelByID(maybeID);
-                if (p == null)
+                Courier maybeCourier = courierController.getCourierWithParcelID(maybeID);
+                if (maybeCourier == null)
                     return;
 
                 ParcelFrame frame = new ParcelFrame(
-                    courierController, p);
+                    courierController, maybeCourier);
                
                 frame.setVisible(true);
             }
