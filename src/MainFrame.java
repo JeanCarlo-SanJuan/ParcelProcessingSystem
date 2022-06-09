@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.awt.Dimension;
 import java.awt.Font;
 
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
@@ -16,6 +17,7 @@ import java.awt.event.ActionListener;
 public class MainFrame extends JFrame {
     private JPanel mainPane;
     private ParcelController PC;
+    private ButtonGroup options;
 
     public MainFrame(ParcelController pc) {
         this.PC = pc;
@@ -63,7 +65,6 @@ public class MainFrame extends JFrame {
         btn_delivery.setFont(new Font("Tahoma", Font.BOLD, 19));
         btn_delivery.setBounds(1000, 360, 200, 80);
         btn_delivery.addActionListener(new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -82,11 +83,16 @@ public class MainFrame extends JFrame {
             }
         });
         mainPane.add(btn_info);
-        ArrayList<String> parcel_id = new ArrayList<>();
-        parcel_id.add("1234 - 5678 - 9012 - 3456");
-        parcel_id.add("7890 - 1234 - 5678 - 9012");
-        parcel_id.add("3456 - 7890 - 1234 - 5678");
-        ButtonGroup id = new ButtonGroup();
-        ParcelButtonsGenerator.createButtonsFromList(parcel_id, id, mainPane, 76, 194, 50, 300, 23);
+    }
+
+    public void updateList() {
+        ArrayList<String> IDs = new ArrayList<>();
+        ButtonGroup bg = new ButtonGroup();
+
+        for (Parcel p: this.PC.getParcels()) {
+            IDs.add(p.parcelId);
+        }
+
+        ParcelButtonsGenerator.createButtonsFromList(IDs, bg, mainPane, 76, 194, 50, 300, 23);
     }
 }
