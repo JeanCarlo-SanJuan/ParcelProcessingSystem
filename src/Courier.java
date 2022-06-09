@@ -21,10 +21,10 @@ public class Courier {
     public Status checkProgress() {
         long timePassed = (new Date()).getTime() - this.startTime.getTime();
 
-        if (timePassed > SECOND * 20) {
+        if (timePassed > 15 * SECOND * this.delivery.getSpeed()) {
             this.delivery.setState(Status.DELIVERED);
         } else
-        if (timePassed > SECOND * 10) {
+        if (timePassed > 5 * SECOND * this.delivery.getSpeed()) {
             this.delivery.setState(Status.ON_DELIVERY);
         }
 
@@ -32,12 +32,15 @@ public class Courier {
     }
 
     public static void main(String[] args) {
-        Courier c =  new Courier(Parcel.sample());
+        Courier c =  new Courier(Parcel.sample(), new Delivery(Mode.AIRPLANE));
         Scanner sc = new Scanner(System.in);
-        System.out.print("Press enter: ");
-        sc.nextLine();
-        System.out.println(
-            c.checkProgress()
-        );
+        while(true) {
+            System.out.print("Press enter: ");
+            sc.nextLine();
+            System.out.println(
+                c.checkProgress()
+            );
+        }
+
     }
 }
