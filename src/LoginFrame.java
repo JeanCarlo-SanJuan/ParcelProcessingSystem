@@ -6,7 +6,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class LoginFrame extends JFrame implements ActionListener {
+public class LoginFrame extends JFrame implements ActionListener 
+{
     private JButton loginButton = new JButton("Login");
     private JButton resetButton = new JButton("Reset");
     private JTextField usernameField = new JTextField();
@@ -17,24 +18,23 @@ public class LoginFrame extends JFrame implements ActionListener {
     int attempt = 0;
 
     private AccountController AC;
-    private ParcelController PC;
+    private CourierController CC;
 
-    public LoginFrame(AccountController ac, ParcelController pc) {
-        /**
-         * The reason for why the Login Frame and its components are fixed and can't be
-         * dynamically resized
-         * is because of simplicity and not really necessary for the login frame, as the
-         * contents features of the login frame
-         * aren't that many to justify a minimum and maximum size.
-         */
+    public LoginFrame(AccountController ac, CourierController cc) 
+    {
+    /**
+     * The reason for why the Login Frame and its components are fixed and can't be dynamically resized
+     * is because of simplicity and not really necessary for the login frame, as the contents features of the login frame 
+     * aren't that many to justify a minimum and maximum size.
+     */
         setResizable(false);
         this.AC = ac;
-        this.PC = pc;
+        this.CC = cc;
 
         // Configure component children
         usernameLabel.setBounds(50, 100, 75, 25);
         passwordLabel.setBounds(50, 150, 75, 25);
-
+        
         messageLabel.setBounds(75, 250, 250, 35);
         messageLabel.setFont(new Font(null, Font.ITALIC, 25));
         messageLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -68,26 +68,31 @@ public class LoginFrame extends JFrame implements ActionListener {
         setTitle("Login");
     }
 
-    private void resetFields() {
+    private void resetFields() 
+    {
         usernameField.setText("");
         passwordField.setText("");
     }
 
-    private void onLoginFail() {
+    private void onLoginFail() 
+    {
         messageLabel.setForeground(Color.red);
         messageLabel.setText("Invalid credentials!");
     }
 
-    private void onLoginSuccess() {
+    private void onLoginSuccess() 
+    {
         messageLabel.setForeground(Color.GREEN);
         messageLabel.setText("Sign In Successful!");
 
         setVisible(false);
-        MainFrame mainFrame = new MainFrame(PC);
+        MainFrame mainFrame = new MainFrame(CC);
 
-        mainFrame.addWindowListener(new WindowAdapter() {
+        mainFrame.addWindowListener(new WindowAdapter() 
+        {
             @Override
-            public void windowClosed(WindowEvent e) {
+            public void windowClosed(WindowEvent e) 
+            {
                 setVisible(true);
                 resetFields();
                 messageLabel.setText("You have signed out!");
@@ -96,14 +101,18 @@ public class LoginFrame extends JFrame implements ActionListener {
         });
         mainFrame.setVisible(true);
     }
-
+    
     @Override
-    public void actionPerformed(ActionEvent e) {
-        switch (e.getActionCommand()) {
+    public void actionPerformed(ActionEvent e) 
+    {
+        switch(e.getActionCommand()) 
+        {
             case "login":
-                if (AC.login(usernameField.getText(), String.valueOf(passwordField.getPassword()))) {
+                if (AC.login(usernameField.getText(), String.valueOf(passwordField.getPassword()))) 
+                {
                     onLoginSuccess();
-                } else {
+                } else 
+                {
                     attempt += 1;
                     onLoginFail();
                 }
@@ -114,10 +123,10 @@ public class LoginFrame extends JFrame implements ActionListener {
             default:
                 System.out.println("Unkown action event: " + e.getActionCommand());
         }
-
-        if (attempt == 5) {
-            JOptionPane.showMessageDialog(null, "Too many failed attempts, the system will now shut down.",
-                    "Login System", JOptionPane.ERROR_MESSAGE);
+        
+        if(attempt == 5)
+        {
+            JOptionPane.showMessageDialog(null, "Too many failed attempts, the system will now shut down.","Login System", JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         }
     }

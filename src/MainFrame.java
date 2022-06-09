@@ -9,16 +9,18 @@ import java.awt.Font;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class MainFrame extends JFrame {
     private static final int GAPS = 10;
-    private ParcelController parcelController;
+    private CourierController courierController;
     private JPanel buttonsPanel;
     private ButtonGroup buttonsGroup;
 
-    public MainFrame(ParcelController parcelController) {
-        this.parcelController = parcelController;
+    public MainFrame(CourierController courierController) {
+        this.courierController = courierController;
         this.initializeComponents();
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     private void initializeComponents() {
@@ -67,7 +69,7 @@ public class MainFrame extends JFrame {
         newParcelButton.setFont(new Font("Tahoma", Font.BOLD, 20));
         newParcelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ParcelFrame frame = new ParcelFrame(parcelController);
+                ParcelFrame frame = new ParcelFrame(courierController, false);
                 frame.setVisible(true);
                 frame.addWindowListener(new WindowAdapter() {
                     @Override
@@ -111,9 +113,9 @@ public class MainFrame extends JFrame {
     }
 
     private void addParcels() {
-        var parcels = parcelController.getParcels();
-        for (int i = 0; i < parcels.size(); i++) {
-            var parcel = parcels.get(i);
+        ArrayList<Courier> couriers = courierController.getCouriers();
+        for (int i = 0; i < couriers.size(); i++) {
+            Parcel parcel = couriers.get(i).parcel;
             var parcelButton = new JRadioButton((i + 1) + ". " + parcel.parcelId);
             parcelButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
             parcelButton.setActionCommand(parcel.parcelId);
@@ -134,8 +136,8 @@ public class MainFrame extends JFrame {
         EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     try {
-                        var parcelController = new ParcelController();
-                        var mainFrame = new MainFrame(parcelController);
+                        var courierController = new CourierController();
+                        var mainFrame = new MainFrame(courierController);
                         mainFrame.setVisible(true);
                     } catch (Exception e) {
                         e.printStackTrace();

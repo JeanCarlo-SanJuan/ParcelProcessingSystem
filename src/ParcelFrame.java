@@ -7,6 +7,7 @@ public class ParcelFrame extends JFrame {
     private final int GAPS = 10;
     private final String textSender = "Sender";
     private final String textReceiver = "Receiver";
+    private final boolean locked;
     private Parcel parcel = new Parcel();
     private String[] senderAddressLines = new String[4];
     private String[] recipientAddressLines = new String[4];
@@ -23,7 +24,7 @@ public class ParcelFrame extends JFrame {
         widthSpinner,
         heightSpinner;
 
-    private ParcelController parcelController;
+    private CourierController courierController;
 
     class TypeHandler implements ActionListener {
         public void actionPerformed(ActionEvent evt) {
@@ -43,8 +44,9 @@ public class ParcelFrame extends JFrame {
         }
     }
 
-    public ParcelFrame(ParcelController parcelController) {
-        this.parcelController = parcelController;
+    public ParcelFrame(CourierController courierController, boolean locked) {
+        this.courierController = courierController;
+        this.locked = locked;
         initializeComponents();
     }
 
@@ -52,9 +54,11 @@ public class ParcelFrame extends JFrame {
         setTitle("Parcel Input Form");
         setPreferredSize(new Dimension(800, 600));
 
-        getContentPane().setLayout(new GridLayout(0, 2, GAPS, GAPS));
+        getContentPane().setLayout(new GridLayout(0, 3, GAPS, GAPS));
         getRootPane().setBorder(new EmptyBorder(GAPS, GAPS, GAPS, GAPS));
 
+        CourierPanel c = new CourierPanel(Courier.sample());
+        add(c);
         createLeftPanel();
         createRightPanel();
 
@@ -270,7 +274,7 @@ public class ParcelFrame extends JFrame {
                     return;
                 }
 
-                pushToParcelController();
+                pushToCourierController();
                 self.dispose();
             }
         });
@@ -284,7 +288,9 @@ public class ParcelFrame extends JFrame {
         whereTo.add(buttonPanel, BorderLayout.PAGE_END);
     }
 
-    private void pushToParcelController() {
-        parcelController.push(parcel);
+    private void pushToCourierController() {
+
+        //TODO:
+        courierController.push(new Courier(parcel, new Delivery()));
     }
 }
