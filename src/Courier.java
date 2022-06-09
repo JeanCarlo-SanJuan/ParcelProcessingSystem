@@ -1,10 +1,13 @@
 import java.util.Date;
+import java.util.Scanner;
+
+import javax.print.attribute.DateTimeSyntax;
 
 public class Courier {
     private Delivery delivery;
     private Parcel parcel;
     private Date startTime;
-
+    private final int SECOND = 1000;
     public Courier(Parcel p, Delivery d) {
         this.parcel = p;
         this.delivery = d;
@@ -18,15 +21,13 @@ public class Courier {
     }
 
     public Status checkProgress() {
-        Date cTime =  new Date();
+        long timePassed = (new Date()).getTime() - this.startTime.getTime();
 
-        int timePassed = cTime.compareTo(this.startTime);
-
-        //Measured in MS
-        if (timePassed > 1000 && timePassed < 3000) {
-            this.delivery.setState(Status.ON_DELIVERY);
-        } else if (timePassed > 6000) {
+        if (timePassed > SECOND * 20) {
             this.delivery.setState(Status.DELIVERED);
+        } else
+        if (timePassed > SECOND * 10) {
+            this.delivery.setState(Status.ON_DELIVERY);
         }
 
         return this.delivery.getState();
@@ -34,6 +35,9 @@ public class Courier {
 
     public static void main(String[] args) {
         Courier c =  new Courier(Parcel.sample());
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Press enter: ");
+        sc.nextLine();
         System.out.println(
             c.checkProgress()
         );
