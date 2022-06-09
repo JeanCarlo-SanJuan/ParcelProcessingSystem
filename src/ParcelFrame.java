@@ -271,7 +271,7 @@ public class ParcelFrame extends JFrame {
                 }
 
                 pushToParcelController();
-                self.dispatchEvent(new WindowEvent(self, WindowEvent.WINDOW_CLOSING));
+                self.dispose();
             }
         });
         classifyButton.setPreferredSize(new Dimension(175, 40));

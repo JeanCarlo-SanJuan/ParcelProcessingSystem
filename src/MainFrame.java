@@ -1,18 +1,17 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import java.util.ArrayList;
 
 import java.awt.Dimension;
 import java.awt.Font;
 
-import javax.swing.BoxLayout;
+import java.awt.event.WindowAdapter;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 public class MainFrame extends JFrame {
     private JPanel mainPane;
@@ -45,6 +44,13 @@ public class MainFrame extends JFrame {
                 frame.setPreferredSize(new Dimension(720, 720));
                 frame.pack();
                 frame.setVisible(true);
+                frame.addWindowListener( new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        updateList();
+                    }
+                });
+
             }
         });
         mainPane.add(btn_add_parcel);
@@ -83,16 +89,12 @@ public class MainFrame extends JFrame {
             }
         });
         mainPane.add(btn_info);
+        updateList();
     }
 
     public void updateList() {
-        ArrayList<String> IDs = new ArrayList<>();
         ButtonGroup bg = new ButtonGroup();
-
-        for (Parcel p: this.PC.getParcels()) {
-            IDs.add(p.parcelId);
-        }
-
-        ParcelButtonsGenerator.createButtonsFromList(IDs, bg, mainPane, 76, 194, 50, 300, 23);
+        ParcelButtonsGenerator.createButtonsFromList( this.PC.getParcels(), bg, mainPane, 76, 194, 50, 300, 23);
+        pack();
     }
 }

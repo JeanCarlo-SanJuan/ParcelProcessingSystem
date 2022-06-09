@@ -10,7 +10,7 @@ public class App {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-                                    currentFrame = new LoginFrame(AC, PC);
+					currentFrame = new LoginFrame(AC, PC);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
