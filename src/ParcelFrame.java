@@ -5,7 +5,8 @@ import javax.swing.border.*;
 
 public class ParcelFrame extends JFrame {
     private final int GAPS = 10;
-
+    private final String textSender = "Sender";
+    private final String textReceiver = "Receiver";
     private String[] senderAddressLines = new String[4];
     private String[] recipientAddressLines = new String[4];
     private String 
@@ -72,8 +73,8 @@ public class ParcelFrame extends JFrame {
 
     private void createLeftPanel() {
         JPanel leftPanel = new JPanel(new GridLayout(3, 0, GAPS, GAPS));
-        createAddressLines(leftPanel, "Sender");
-        createAddressLines(leftPanel, "Receiver");
+        createAddressLines(leftPanel, textSender);
+        createAddressLines(leftPanel, textReceiver);
         createRadioButtons(leftPanel);
         add(leftPanel);
     }
@@ -91,9 +92,9 @@ public class ParcelFrame extends JFrame {
             JTextField addressLineField = new JTextField(25);
             addressLinePanel.add(addressLineField);
             addressPanel.add(addressLinePanel);
-            if (titleText == "Sender") {
+            if (titleText == textSender) {
                 senderAddressFields[line - 1] = addressLineField;
-            } else if (titleText == "Receiver") {
+            } else if (titleText == textReceiver) {
                 recipientAddressFields[line - 1] = addressLineField;
             }
         }
@@ -274,11 +275,11 @@ public class ParcelFrame extends JFrame {
 
                     // TODO: replace this with controller code
 
-                    System.out.println("Sender");
+                    System.out.println(textSender);
                     for (int i = 0; i < 4; i++) {
                         System.out.println("Line " + (i + 1) + ": " + senderAddressLines[i]);
                     }
-                    System.out.println("Receiver");
+                    System.out.println(textReceiver);
                     for (int i = 0; i < 4; i++) {
                         System.out.println("Line " + (i + 1) + ": " + recipientAddressLines[i]);
                     }
