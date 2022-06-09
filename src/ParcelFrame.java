@@ -55,6 +55,7 @@ public class ParcelFrame extends JFrame {
 
     public ParcelFrame() {
         initializeComponents();
+        this.setTitle("Parcel Input Form");
     }
 
     private void initializeComponents() {
