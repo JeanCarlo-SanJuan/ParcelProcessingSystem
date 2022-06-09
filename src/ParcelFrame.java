@@ -15,7 +15,7 @@ public class ParcelFrame extends JFrame {
     private JTextField[] recipientAddressFields = new JTextField[4];
     private JTextField parcelNameTextField;
     private JTextArea parcelRemarksTextArea;
-    
+
     private JSpinner 
         valueSpinner,
         weightSpinner,
@@ -227,58 +227,63 @@ public class ParcelFrame extends JFrame {
         JButton classifyButton = new JButton("Classify");
         JFrame self = this;
         classifyButton.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent evt) {
-                    for (int i = 0; i < 4; i++) {
-                        String senderText = senderAddressFields[i].getText();
-                        String recipientText = recipientAddressFields[i].getText();
-                        if (senderText.isEmpty()) {
-                            JOptionPane.showMessageDialog(self, "Sender address line " + (i + 1) + " is empty", "Warning", JOptionPane.WARNING_MESSAGE);
-                            return;
-                        }
-                        if (recipientText.isEmpty()) {
-                            JOptionPane.showMessageDialog(self, "Recipient address line " + (i + 1) + " is empty", "Warning", JOptionPane.WARNING_MESSAGE);
-                            return;
-                        }
-                        senderAddressLines[i] = senderText;
-                        recipientAddressLines[i] = recipientText;
-                    }
-                    parcel.sender = new Addresses(senderAddressLines);
-                    parcel.receiver = new Addresses(recipientAddressLines);
-
-                    parcel.name = parcelNameTextField.getText();
-                    if (parcel.name.isEmpty()) {
-                        JOptionPane.showMessageDialog(self, "Parcel name cannot be empty", "Warning", JOptionPane.WARNING_MESSAGE);
+            public void actionPerformed(ActionEvent evt) {
+                for (int i = 0; i < 4; i++) {
+                    String senderText = senderAddressFields[i].getText();
+                    String recipientText = recipientAddressFields[i].getText();
+                    if (senderText.isEmpty()) {
+                        JOptionPane.showMessageDialog(self, "Sender address line " + (i + 1) + " is empty", "Warning",
+                                JOptionPane.WARNING_MESSAGE);
                         return;
                     }
-                    parcel.description = parcelRemarksTextArea.getText();
-                    parcel.price = (double) valueSpinner.getValue();
-                    parcel.weight = (double) weightSpinner.getValue();
-                    parcel.dimension = new Dimension3D(
-                        (double) lengthSpinner.getValue(), 
-                        (double) widthSpinner.getValue(), 
+                    if (recipientText.isEmpty()) {
+                        JOptionPane.showMessageDialog(self, "Recipient address line " + (i + 1) + " is empty",
+                                "Warning", JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+                    senderAddressLines[i] = senderText;
+                    recipientAddressLines[i] = recipientText;
+                }
+                parcel.sender = new Addresses(senderAddressLines);
+                parcel.receiver = new Addresses(recipientAddressLines);
+
+                parcel.name = parcelNameTextField.getText();
+                if (parcel.name.isEmpty()) {
+                    JOptionPane.showMessageDialog(self, "Parcel name cannot be empty", "Warning",
+                            JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                parcel.description = parcelRemarksTextArea.getText();
+                parcel.price = (double) valueSpinner.getValue();
+                parcel.weight = (double) weightSpinner.getValue();
+                parcel.dimension = new Dimension3D(
+                        (double) lengthSpinner.getValue(),
+                        (double) widthSpinner.getValue(),
                         (double) heightSpinner.getValue());
 
-                    if (parcel.type == null) {
-                        JOptionPane.showMessageDialog(self, "No parcel type selected", "Warning", JOptionPane.WARNING_MESSAGE);
-                        return;
-                    }
-
-                    // TODO: replace this with controller code
-
-                    System.out.println(textSender + "\n" + parcel.sender);
-                    System.out.println(textSender + "\n" + parcel.receiver);
-                    System.out.println("Type: " + parcel.type);
-                    System.out.println("Taxable: " + parcel.isTaxable);
-                    System.out.println("Perishable: " + parcel.isPerishable);
-                    System.out.println("Parcel Name: " + parcel.name);
-                    System.out.println("Parcel Remarks: " + parcel.description);
-                    System.out.println("Parcel Price: " + parcel.price);
-                    System.out.println("Parcel Weight: " + parcel.weight);
-                    System.out.println("Parcel Dimensions: " + parcel.dimension);
-                    JOptionPane.showMessageDialog(self, "Finished classifying parcel.", "Information", JOptionPane.INFORMATION_MESSAGE);
-                    self.dispatchEvent(new WindowEvent(self, WindowEvent.WINDOW_CLOSING));
+                if (parcel.type == null) {
+                    JOptionPane.showMessageDialog(self, "No parcel type selected", "Warning",
+                            JOptionPane.WARNING_MESSAGE);
+                    return;
                 }
-            });
+
+                // TODO: replace this with controller code
+
+                System.out.println(textSender + "\n" + parcel.sender);
+                System.out.println(textSender + "\n" + parcel.receiver);
+                System.out.println("Type: " + parcel.type);
+                System.out.println("Taxable: " + parcel.isTaxable);
+                System.out.println("Perishable: " + parcel.isPerishable);
+                System.out.println("Parcel Name: " + parcel.name);
+                System.out.println("Parcel Remarks: " + parcel.description);
+                System.out.println("Parcel Price: " + parcel.price);
+                System.out.println("Parcel Weight: " + parcel.weight);
+                System.out.println("Parcel Dimensions: " + parcel.dimension);
+                JOptionPane.showMessageDialog(self, "Finished classifying parcel.", "Information",
+                        JOptionPane.INFORMATION_MESSAGE);
+                self.dispatchEvent(new WindowEvent(self, WindowEvent.WINDOW_CLOSING));
+            }
+        });
         classifyButton.setPreferredSize(new Dimension(175, 40));
         buttonPanel.add(classifyButton);
 
@@ -291,15 +296,15 @@ public class ParcelFrame extends JFrame {
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    try {
-                        ParcelFrame frame = new ParcelFrame();
-                        frame.setVisible(true);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+            public void run() {
+                try {
+                    ParcelFrame frame = new ParcelFrame();
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
+            }
 
-            });
+        });
     }
 }
