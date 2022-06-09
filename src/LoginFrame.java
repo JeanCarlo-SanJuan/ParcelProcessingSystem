@@ -6,14 +6,14 @@ import java.lang.String;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class LoginFrame extends JFrame {
-    JButton loginButton = new JButton("Login");
-    JButton resetButton = new JButton("Reset");
-    JTextField usernameField = new JTextField();
-    JPasswordField passwordField = new JPasswordField();
-    JLabel usernameLabel = new JLabel("Username: ");
-    JLabel passwordLabel = new JLabel("Password: ");
-    JLabel messageLabel = new JLabel("Welcome!");
+public class LoginFrame extends JFrame implements ActionListener {
+    private JButton loginButton = new JButton("Login");
+    private JButton clearButton = new JButton("Reset");
+    private JTextField usernameField = new JTextField();
+    private JPasswordField passwordField = new JPasswordField();
+    private JLabel usernameLabel = new JLabel("Username: ");
+    private JLabel passwordLabel = new JLabel("Password: ");
+    private JLabel messageLabel = new JLabel("Welcome!");
 
     private AccountController AC;
 
@@ -30,59 +30,74 @@ public class LoginFrame extends JFrame {
 
         loginButton.setBounds(125, 200, 100, 25);
         loginButton.setFocusable(false);
-        loginButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String name = usernameField.getText();
-                String phrase = String.valueOf(passwordField.getPassword());
+        loginButton.addActionListener(this);
+        loginButton.setActionCommand("login");
 
-                if (!AC.login(name, phrase)) {
-                    messageLabel.setForeground(Color.red);
-                    messageLabel.setText("Incorrect credentials!");
-                    return;
-                }
-
-                messageLabel.setForeground(Color.blue);
-                messageLabel.setText("Sign In Successful!");
-                LoginFrame.this.setVisible(false);
-                MainFrame mainFrame = new MainFrame();
-
-                mainFrame.addWindowListener(new WindowAdapter() {
-                    @Override
-                    public void windowClosed(WindowEvent e) {
-                        LoginFrame.this.setVisible(true);
-                        resetFields();
-                    }
-                });
-                mainFrame.setVisible(true);
-            }
-        });
-
-        resetButton.setBounds(225, 200, 100, 25);
-        resetButton.setFocusable(false);
-        resetButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                resetFields();
-            }
-        });
-
-        this.add(usernameLabel);
-        this.add(passwordLabel);
-        this.add(messageLabel);
-        this.add(usernameField);
-        this.add(passwordField);
-        this.add(loginButton);
-        this.add(resetButton);
-        this.setSize(420, 420);
-        this.setLayout(null);
-        this.setVisible(true);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setTitle("Login");
+        clearButton.setBounds(225, 200, 100, 25);
+        clearButton.setFocusable(false);
+        clearButton.addActionListener(this);
+        clearButton.setActionCommand("clear");
+        add(usernameLabel);
+        add(passwordLabel);
+        add(messageLabel);
+        add(usernameField);
+        add(passwordField);
+        add(loginButton);
+        add(clearButton);
+        setSize(420, 420);
+        setLayout(null);
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Login");
     }
 
-    public void resetFields() {
+    private void clearFields() {
         usernameField.setText("");
         passwordField.setText("");
+    }
+
+    private void onLoginFail() {
+        messageLabel.setForeground(Color.red);
+        messageLabel.setText("Incorrect credentials!");
+    }
+
+    private void onLoginSuccess() {
+        messageLabel.setForeground(Color.GREEN);
+        messageLabel.setText("Sign In Successful!");
+
+        setVisible(false);
+        MainFrame mainFrame = new MainFrame();
+
+        mainFrame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                setVisible(true);
+                clearFields();
+                messageLabel.setText("You have signed out!");
+                messageLabel.setForeground(Color.BLUE);
+            }
+        });
+        mainFrame.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        switch(e.getActionCommand()) {
+            case "login":
+                if (AC.login(
+                    usernameField.getText(), 
+                    String.valueOf(passwordField.getPassword()))
+                ) {
+                    onLoginSuccess();
+                } else {
+                    onLoginFail();
+                }
+            break;
+            case "clear":
+                clearFields();
+            break;
+            default:
+                System.out.println("Unkown action event: " + e.getActionCommand());
+        }
     }
 }
