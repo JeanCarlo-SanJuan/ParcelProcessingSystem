@@ -69,10 +69,10 @@ public class MainFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 ParcelFrame frame = new ParcelFrame(parcelController);
                 frame.setVisible(true);
-                frame.addWindowListener( new WindowAdapter() {
+                frame.addWindowListener(new WindowAdapter() {
                     @Override
                     public void windowClosed(WindowEvent e) {
-                        updateList();
+                        refreshParcels();
                     }
                 });
 
