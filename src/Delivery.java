@@ -7,19 +7,10 @@ public class Delivery {
         this.state = s;
     }
     
+    //Default creation
     public Delivery() {
         this.mode = Mode.VEHICLE;
         this.state = Status.PICKUP;
-    }
-
-    public Delivery(Mode m) {
-        this.mode = m;
-        this.state = Status.PICKUP;
-    }
-
-    public Delivery(Status s) {
-        this.mode = Mode.VEHICLE;
-        this.state = s;
     }
 
     public void setState(Status s) {
@@ -30,14 +21,15 @@ public class Delivery {
         this.mode = m;
     }
 
-    public int getSpeed() {
-        return this.mode.ordinal() + 1;
-    }
     public Status getState() {
         return this.state;
     }
 
     public Mode getMode() {
         return this.mode;
+    }
+
+    public int getSpeed() {
+        return this.mode.ordinal() + 1;
     }
 }
