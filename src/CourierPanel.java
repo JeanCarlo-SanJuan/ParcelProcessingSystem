@@ -1,12 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class CourierPanel extends Panel {
     public CourierPanel(Courier courier) {
         BoxLayout boxlayout = new BoxLayout(this, BoxLayout.Y_AXIS);
         this.setLayout(boxlayout);
-        GridBagConstraints gc = new GridBagConstraints();
         
         JLabel title = new JLabel("Preview");
         title.setFont(new Font("Tahoma", Font.BOLD,20));
@@ -52,9 +50,5 @@ public class CourierPanel extends Panel {
         info3.setHorizontalAlignment(SwingConstants.CENTER);
         info3.setVerticalAlignment(SwingConstants.NORTH);
         this.add(info3);
-        
-        //TODO: paint image
-
-        this.setMinimumSize(new Dimension(800,600));
     }
 }
