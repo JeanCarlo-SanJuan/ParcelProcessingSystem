@@ -34,7 +34,7 @@ public class Courier {
     }
 
     public static Courier sample() {
-        return  new Courier(Parcel.sample(), new Delivery(Mode.AIRPLANE));
+        return  new Courier(Parcel.sample(), new Delivery(Mode.AIRPLANE, Status.PICKUP));
     }
     public static void main(String[] args) {
         Courier c = sample();
