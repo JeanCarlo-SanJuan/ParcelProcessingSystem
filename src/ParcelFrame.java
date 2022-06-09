@@ -23,6 +23,8 @@ public class ParcelFrame extends JFrame {
         widthSpinner,
         heightSpinner;
 
+    private ParcelController parcelController;
+
     class TypeHandler implements ActionListener {
         public void actionPerformed(ActionEvent evt) {
             parcel.type = evt.getActionCommand();
@@ -41,12 +43,13 @@ public class ParcelFrame extends JFrame {
         }
     }
 
-    public ParcelFrame() {
+    public ParcelFrame(ParcelController parcelController) {
+        this.parcelController = parcelController;
         initializeComponents();
-        this.setTitle("Parcel Input Form");
     }
 
     private void initializeComponents() {
+        setTitle("Parcel Input Form");
         setPreferredSize(new Dimension(800, 600));
 
         getContentPane().setLayout(new GridLayout(0, 2, GAPS, GAPS));
@@ -267,20 +270,7 @@ public class ParcelFrame extends JFrame {
                     return;
                 }
 
-                // TODO: replace this with controller code
-
-                System.out.println(textSender + "\n" + parcel.sender);
-                System.out.println(textSender + "\n" + parcel.receiver);
-                System.out.println("Type: " + parcel.type);
-                System.out.println("Taxable: " + parcel.isTaxable);
-                System.out.println("Perishable: " + parcel.isPerishable);
-                System.out.println("Parcel Name: " + parcel.name);
-                System.out.println("Parcel Remarks: " + parcel.description);
-                System.out.println("Parcel Price: " + parcel.price);
-                System.out.println("Parcel Weight: " + parcel.weight);
-                System.out.println("Parcel Dimensions: " + parcel.dimension);
-                JOptionPane.showMessageDialog(self, "Finished classifying parcel.", "Information",
-                        JOptionPane.INFORMATION_MESSAGE);
+                pushToParcelController();
                 self.dispatchEvent(new WindowEvent(self, WindowEvent.WINDOW_CLOSING));
             }
         });
@@ -294,17 +284,7 @@ public class ParcelFrame extends JFrame {
         whereTo.add(buttonPanel, BorderLayout.PAGE_END);
     }
 
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    ParcelFrame frame = new ParcelFrame();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-        });
+    private void pushToParcelController() {
+        parcelController.push(parcel);
     }
 }

@@ -15,8 +15,10 @@ import java.awt.event.ActionListener;
 
 public class MainFrame extends JFrame {
     private JPanel mainPane;
+    private ParcelController PC;
 
-    public MainFrame() {
+    public MainFrame(ParcelController pc) {
+        this.PC = pc;
         setTitle("Main Window");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 1280, 720);
@@ -37,7 +39,7 @@ public class MainFrame extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                ParcelFrame frame = new ParcelFrame();
+                ParcelFrame frame = new ParcelFrame(PC);
                 frame.setPreferredSize(new Dimension(720, 720));
                 frame.pack();
                 frame.setVisible(true);

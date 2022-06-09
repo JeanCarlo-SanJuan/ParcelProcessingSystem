@@ -16,9 +16,11 @@ public class LoginFrame extends JFrame implements ActionListener {
     private JLabel messageLabel = new JLabel("Welcome!");
 
     private AccountController AC;
+    private ParcelController PC;
 
-    public LoginFrame(AccountController ac) {
+    public LoginFrame(AccountController ac, ParcelController pc) {
         this.AC = ac;
+        this.PC = pc;
 
         //Configure component children
         usernameLabel.setBounds(50, 100, 75, 25);
@@ -71,7 +73,7 @@ public class LoginFrame extends JFrame implements ActionListener {
         messageLabel.setText("Sign In Successful!");
 
         setVisible(false);
-        MainFrame mainFrame = new MainFrame();
+        MainFrame mainFrame = new MainFrame(PC);
 
         mainFrame.addWindowListener(new WindowAdapter() {
             @Override
