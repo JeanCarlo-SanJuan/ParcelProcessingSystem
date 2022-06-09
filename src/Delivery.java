@@ -1,5 +1,5 @@
 public class Delivery {
-    private final Mode mode;
+    public final Mode mode;
     private Status state;
 
     public Delivery(Mode m, Status s) {
@@ -27,6 +27,9 @@ public class Delivery {
         this.state = s;
     }
 
+    public int getSpeed() {
+        return this.mode.ordinal() + 1;
+    }
     public Status getState() {
         return this.state;
     }
