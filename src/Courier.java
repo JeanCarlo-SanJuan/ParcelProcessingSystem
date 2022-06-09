@@ -1,8 +1,6 @@
 import java.util.Date;
 import java.util.Scanner;
 
-import javax.print.attribute.DateTimeSyntax;
-
 public class Courier {
     private Delivery delivery;
     private Parcel parcel;
