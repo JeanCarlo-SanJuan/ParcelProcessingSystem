@@ -69,7 +69,7 @@ public class MainFrame extends JFrame {
         newParcelButton.setFont(new Font("Tahoma", Font.BOLD, 20));
         newParcelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ParcelFrame frame = new ParcelFrame(courierController, false);
+                ParcelFrame frame = new ParcelFrame(courierController, null);
                 frame.setVisible(true);
                 frame.addWindowListener(new WindowAdapter() {
                     @Override
@@ -86,7 +86,19 @@ public class MainFrame extends JFrame {
         statusButton.setFont(new Font("Tahoma", Font.BOLD, 20));
         statusButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                String maybeID = buttonsGroup.getSelection().getActionCommand();
+                
+                if (maybeID == null)
+                    return;
 
+                Parcel p = courierController.getParcelByID(maybeID);
+                if (p == null)
+                    return;
+
+                ParcelFrame frame = new ParcelFrame(
+                    courierController, p);
+               
+                frame.setVisible(true);
             }
         });
         rightPanel.add(statusButton);

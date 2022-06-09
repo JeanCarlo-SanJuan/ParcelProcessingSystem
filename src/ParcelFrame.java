@@ -7,7 +7,7 @@ public class ParcelFrame extends JFrame {
     private final int GAPS = 10;
     private final String textSender = "Sender";
     private final String textReceiver = "Receiver";
-    private final boolean locked;
+    private final Parcel template;
     private Parcel parcel = new Parcel();
     private String[] senderAddressLines = new String[4];
     private String[] recipientAddressLines = new String[4];
@@ -16,6 +16,10 @@ public class ParcelFrame extends JFrame {
     private JTextField[] recipientAddressFields = new JTextField[4];
     private JTextField parcelNameTextField;
     private JTextArea parcelRemarksTextArea;
+
+    private JPanel centerPanel;
+    private JPanel rightPanel;
+    private CourierPanel leftPanel;
 
     private JSpinner 
         valueSpinner,
@@ -44,10 +48,11 @@ public class ParcelFrame extends JFrame {
         }
     }
 
-    public ParcelFrame(CourierController courierController, boolean locked) {
+    public ParcelFrame(CourierController courierController, Parcel template) {
         this.courierController = courierController;
-        this.locked = locked;
+        this.template = template;
         initializeComponents();
+        applyTemplate();
     }
 
     private void initializeComponents() {
@@ -57,20 +62,23 @@ public class ParcelFrame extends JFrame {
         getContentPane().setLayout(new GridLayout(0, 3, GAPS, GAPS));
         getRootPane().setBorder(new EmptyBorder(GAPS, GAPS, GAPS, GAPS));
 
-        CourierPanel c = new CourierPanel(Courier.sample());
-        add(c);
         createLeftPanel();
+        createCenterPanel();
         createRightPanel();
-
         pack();
     }
 
     private void createLeftPanel() {
-        JPanel leftPanel = new JPanel(new GridLayout(3, 0, GAPS, GAPS));
-        createAddressLines(leftPanel, textSender);
-        createAddressLines(leftPanel, textReceiver);
-        createRadioButtons(leftPanel);
+        this.leftPanel = new CourierPanel(Courier.sample());
         add(leftPanel);
+    }
+
+    private void createCenterPanel() {
+        this.centerPanel = new JPanel(new GridLayout(3, 0, GAPS, GAPS));
+        createAddressLines(centerPanel, textSender);
+        createAddressLines(centerPanel, textReceiver);
+        createRadioButtons(centerPanel);
+        add(centerPanel);
     }
 
     private void createAddressLines(JPanel whereTo, String titleText) {
@@ -162,7 +170,7 @@ public class ParcelFrame extends JFrame {
     }
 
     private void createRightPanel() {
-        JPanel rightPanel = new JPanel(new BorderLayout());
+        this.rightPanel = new JPanel(new BorderLayout());
 
         createRightFields(rightPanel);
         createFinishButtons(rightPanel);
@@ -288,9 +296,37 @@ public class ParcelFrame extends JFrame {
         whereTo.add(buttonPanel, BorderLayout.PAGE_END);
     }
 
-    private void pushToCourierController() {
+    private void applyTemplate() {
+        if (template == null)
+            return;
 
-        //TODO:
+        for (int i = 0; i < Addresses.requiredLen; i++) {
+            JTextField t1 = this.senderAddressFields[i];
+            JTextField t2 = this.recipientAddressFields[i];
+            t1.setText(template.sender.get(i)); 
+            t2.setText(template.receiver.get(i));
+            t1.setEditable(false);
+            t2.setEditable(false);
+        }
+
+        parcelNameTextField.setText(template.name);
+        parcelRemarksTextArea.setText(template.description);
+        valueSpinner.setValue(template.price);
+        weightSpinner.setValue(template.weight);
+        lengthSpinner.setValue(template.dimension.length);
+        widthSpinner.setValue(template.dimension.width);
+        heightSpinner.setValue(template.dimension.height);
+
+        parcelNameTextField.setEnabled(false);
+        parcelRemarksTextArea.setEnabled(false);
+        valueSpinner.setEnabled(false);
+        weightSpinner.setEnabled(false);
+        lengthSpinner.setEnabled(false);
+        widthSpinner.setEnabled(false);
+        heightSpinner.setEnabled(false);
+    }
+
+    private void pushToCourierController() {
         courierController.push(new Courier(parcel, new Delivery()));
     }
 }

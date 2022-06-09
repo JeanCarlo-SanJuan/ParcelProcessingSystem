@@ -11,4 +11,14 @@ public class CourierController {
         // this makes sure that we can't mutate the inner list.
         return new ArrayList<Courier>(couriers);
     }
+
+    public Parcel getParcelByID(String id) {
+        for (Courier c: couriers) {
+            if (c.parcel.parcelId.compareTo(id) == 0) {
+                return c.parcel;
+            }
+        }
+
+        return null;
+    }
 }

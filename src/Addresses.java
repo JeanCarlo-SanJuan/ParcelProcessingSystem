@@ -1,5 +1,5 @@
 public class Addresses {
-    final int requiredLen = 4;
+    public static final int requiredLen = 4;
     public String[] address = new String[requiredLen];
     public Addresses(String[] AddressList) throws IllegalArgumentException{
         if (AddressList.length < requiredLen) {
