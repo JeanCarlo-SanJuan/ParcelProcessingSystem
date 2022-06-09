@@ -1,15 +1,22 @@
 public class Parcel {
-    public final Dimension3D dimension;
-    public final Addresses sender, receiver;
+    public Dimension3D dimension;
+    public Addresses sender, receiver;
 
-    public final String 
+    public String 
         name,
+        type,
         description;
-
-    public final double
+    public boolean
+        isPerishable,
+        isTaxable;
+    public double
         price,
         weight,
         tax_factor;
+    
+    public Parcel() {
+        //Do nothing
+    }
 
     public Parcel(String name, String desc, double price, double weight, double tax_factor, Dimension3D dimension3d, Addresses sender, Addresses receiver) {
         this.name = name;

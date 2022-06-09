@@ -11,4 +11,8 @@ public class Dimension3D {
         this.width = w;
         this.height = h;
     }
+
+    public String toString() {
+        return "Length: " + this.length+ "\nWidth: " + this.width + "\nHeight: " + this.height;
+    }
 }
