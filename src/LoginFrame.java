@@ -51,7 +51,7 @@ public class LoginFrame extends JFrame implements ActionListener {
         setTitle("Login");
     }
 
-    private void clearFields() {
+    private void resetFields() {
         usernameField.setText("");
         passwordField.setText("");
     }
@@ -72,7 +72,7 @@ public class LoginFrame extends JFrame implements ActionListener {
             @Override
             public void windowClosed(WindowEvent e) {
                 setVisible(true);
-                clearFields();
+                resetFields();
                 messageLabel.setText("You have signed out!");
                 messageLabel.setForeground(Color.BLUE);
             }
@@ -94,7 +94,7 @@ public class LoginFrame extends JFrame implements ActionListener {
                 }
             break;
             case "reset":
-                clearFields();
+                resetFields();
             break;
             default:
                 System.out.println("Unkown action event: " + e.getActionCommand());
