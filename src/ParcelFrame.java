@@ -322,10 +322,10 @@ public class ParcelFrame extends JFrame {
             t2.setEditable(false);
         }
 
-        parcelNameTextField.setText(parcelTemp.name);
-        parcelRemarksTextArea.setText(parcelTemp.description);
-        valueSpinner.setValue(parcelTemp.price);
-        weightSpinner.setValue(parcelTemp.weight);
+        parcelNameTextField.setText(parcelTemp.getName());
+        parcelRemarksTextArea.setText(parcelTemp.getDescription());
+        valueSpinner.setValue(parcelTemp.getPrice());
+        weightSpinner.setValue(parcelTemp.getWeight());
         lengthSpinner.setValue(parcelTemp.dimension.length);
         widthSpinner.setValue(parcelTemp.dimension.width);
         heightSpinner.setValue(parcelTemp.dimension.height);
@@ -335,7 +335,6 @@ public class ParcelFrame extends JFrame {
         } else {
             typeItemButton.setSelected(true);
         }
-
         
         parcelNameTextField.setEnabled(false);
         parcelRemarksTextArea.setEnabled(false);
@@ -351,7 +350,7 @@ public class ParcelFrame extends JFrame {
         typeMailButton.setEnabled(false);
         typeItemButton.setEnabled(false);
 
-        leftPanel.previewID.setText(parcelTemp.parcelId);
+        leftPanel.previewID.setText(parcelTemp.getID());
         leftPanel.previewStatus.setText("" + template.checkProgress());
         leftPanel.previewMode.setText("" + template.delivery.getMode());
     }

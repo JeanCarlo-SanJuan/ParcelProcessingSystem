@@ -3,7 +3,7 @@ import java.util.UUID;
 public class Parcel {
     public Dimension3D dimension;
     public Addresses sender, receiver;
-    public String parcelId = UUID.randomUUID().toString();
+    public String ID = UUID.randomUUID().toString();
 
     public String 
         name,
@@ -16,7 +16,7 @@ public class Parcel {
         price,
         weight,
         tax_factor;
-    
+
     public Parcel() {
         //Do nothing
     }
@@ -32,6 +32,110 @@ public class Parcel {
         this.receiver = receiver;
         this.isTaxable = isTaxable;
         this.isPerishable =isPerishable;
+    }
+
+    public Dimension3D getDimension() {
+        return this.dimension;
+    }
+
+    public void setDimension(Dimension3D dimension) {
+        this.dimension = dimension;
+    }
+
+    public Addresses getSender() {
+        return this.sender;
+    }
+
+    public void setSender(Addresses sender) {
+        this.sender = sender;
+    }
+
+    public Addresses getReceiver() {
+        return this.receiver;
+    }
+
+    public void setReceiver(Addresses receiver) {
+        this.receiver = receiver;
+    }
+
+    public String getID() {
+        return this.ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getType() {
+        return this.type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isIsPerishable() {
+        return this.isPerishable;
+    }
+
+    public boolean getIsPerishable() {
+        return this.isPerishable;
+    }
+
+    public void setIsPerishable(boolean isPerishable) {
+        this.isPerishable = isPerishable;
+    }
+
+    public boolean isIsTaxable() {
+        return this.isTaxable;
+    }
+
+    public boolean getIsTaxable() {
+        return this.isTaxable;
+    }
+
+    public void setIsTaxable(boolean isTaxable) {
+        this.isTaxable = isTaxable;
+    }
+
+    public double getPrice() {
+        return this.price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public double getWeight() {
+        return this.weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public double getTax_factor() {
+        return this.tax_factor;
+    }
+
+    public void setTax_factor(double tax_factor) {
+        this.tax_factor = tax_factor;
     }
 
     static Parcel sample() {

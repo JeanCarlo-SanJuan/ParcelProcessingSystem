@@ -14,7 +14,7 @@ public class CourierController {
 
     public Courier getCourierWithParcelID(String id) {
         for (Courier c: couriers) {
-            if (c.parcel.parcelId.compareTo(id) == 0) {
+            if (c.parcel.ID.compareTo(id) == 0) {
                 return c;
             }
         }

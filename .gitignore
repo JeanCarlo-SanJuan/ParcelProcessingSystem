@@ -8,3 +8,5 @@ lib/
 *.ai
 bin/
 .vscode
+*.jar
+.VS*

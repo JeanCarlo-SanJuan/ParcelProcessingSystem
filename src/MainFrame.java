@@ -119,16 +119,18 @@ public class MainFrame extends JFrame {
         ArrayList<Courier> couriers = courierController.getCouriers();
         for (int i = 0; i < couriers.size(); i++) {
             Parcel parcel = couriers.get(i).parcel;
-            var parcelButton = new JRadioButton((i + 1) + ". " + parcel.parcelId);
+            var parcelButton = new JRadioButton((i + 1) + ". " + parcel.getID());
             parcelButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-            parcelButton.setActionCommand(parcel.parcelId);
+            parcelButton.setActionCommand(parcel.getID());
             buttonsPanel.add(parcelButton);
             buttonsGroup.add(parcelButton);
         }
+
+        //Sets a default option
         buttonsGroup
             .getElements()
             .nextElement()
-        .setSelected(true);
+            .setSelected(true);
     }
     
     private void refreshParcels() {

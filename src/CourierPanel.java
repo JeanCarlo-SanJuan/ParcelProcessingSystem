@@ -20,7 +20,7 @@ public class CourierPanel extends Panel {
         JLabel col1 = new JLabel("Parcel ID");
         this.add(col1); 
         
-        previewID.setText(courier.parcel.parcelId);
+        previewID.setText(courier.parcel.getID());
         previewID.setOpaque(true);
         this.add(previewID);
 
