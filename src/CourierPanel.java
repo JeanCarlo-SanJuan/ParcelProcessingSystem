@@ -6,12 +6,11 @@ public class CourierPanel extends Panel {
     public JLabel previewID = new JLabel("");
     public JLabel previewStatus = new JLabel("");
     public JLabel previewMode = new JLabel("");
-    
-    public CourierPanel(Courier courier) {
+    public CourierPanel(Courier courier, String headerText) {
         BoxLayout boxlayout = new BoxLayout(this, BoxLayout.Y_AXIS);
         this.setLayout(boxlayout);
         
-        JLabel title = new JLabel("Preview");
+        JLabel title = new JLabel(headerText);
         title.setFont(new Font("Tahoma", Font.BOLD,20));
         title.setOpaque(true);
         this.add(title);
@@ -19,9 +18,6 @@ public class CourierPanel extends Panel {
         this.add(Box.createRigidArea(new Dimension(0, 20)));
 
         JLabel col1 = new JLabel("Parcel ID");
-        col1.setFont(new Font("Tahoma", Font.BOLD,15));
-        col1.setBackground(Color.LIGHT_GRAY);
-        col1.setOpaque(true);
         this.add(col1); 
         
         previewID.setText(courier.parcel.parcelId);
@@ -31,9 +27,6 @@ public class CourierPanel extends Panel {
         this.add(Box.createRigidArea(new Dimension(0, 20)));
 
         JLabel col2 = new JLabel("Status");
-        col2.setFont(new Font("Tahomar", Font.BOLD,15));
-        col2.setBackground(Color.LIGHT_GRAY);
-        col2.setOpaque(true);
         this.add(col2);
         
         previewStatus.setText("" + courier.checkProgress());
@@ -43,13 +36,16 @@ public class CourierPanel extends Panel {
         this.add(Box.createRigidArea(new Dimension(0, 20)));
 
         JLabel col3 = new JLabel("Mode");
-        col3.setBackground(Color.LIGHT_GRAY);
-        col3.setFont(new Font("Tahoma", Font.BOLD,15));
-        col3.setOpaque(true);
         this.add(col3);
 
         previewMode.setText("" + courier.delivery.getMode());
         previewMode.setOpaque(true);
         this.add(previewMode);
+
+        JLabel cols[] = {col1,col2,col3};
+
+        for (JLabel col: cols) {
+            col.setFont(new Font("Tahoma", Font.BOLD,15));
+        }
     }
 }

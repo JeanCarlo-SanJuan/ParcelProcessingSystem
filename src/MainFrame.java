@@ -25,7 +25,7 @@ public class MainFrame extends JFrame {
 
     private void initializeComponents() {
         setTitle("Parcel Input Form");
-        setPreferredSize(new Dimension(1280, 720));
+        setPreferredSize(new Dimension(1024, 576));
 
         var contentPane = getContentPane();
         contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.LINE_AXIS));
@@ -125,6 +125,10 @@ public class MainFrame extends JFrame {
             buttonsPanel.add(parcelButton);
             buttonsGroup.add(parcelButton);
         }
+        buttonsGroup
+            .getElements()
+            .nextElement()
+        .setSelected(true);
     }
     
     private void refreshParcels() {

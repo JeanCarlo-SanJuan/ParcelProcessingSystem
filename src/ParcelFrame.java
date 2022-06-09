@@ -64,7 +64,7 @@ public class ParcelFrame extends JFrame {
 
     private void initializeComponents() {
         setTitle("Parcel Input Form");
-        setPreferredSize(new Dimension(800, 600));
+        setPreferredSize(new Dimension(1024, 600));
 
         getContentPane().setLayout(new GridLayout(0, 3, GAPS, GAPS));
         getRootPane().setBorder(new EmptyBorder(GAPS, GAPS, GAPS, GAPS));
@@ -76,7 +76,9 @@ public class ParcelFrame extends JFrame {
     }
 
     private void createLeftPanel() {
-        this.leftPanel = new CourierPanel(Courier.sample());
+        this.leftPanel = new CourierPanel(Courier.sample(),
+            template == null ? "Preview" : "Live view"
+        );
         add(leftPanel);
     }
 
@@ -334,6 +336,7 @@ public class ParcelFrame extends JFrame {
             typeItemButton.setSelected(true);
         }
 
+        
         parcelNameTextField.setEnabled(false);
         parcelRemarksTextArea.setEnabled(false);
         valueSpinner.setEnabled(false);
@@ -348,9 +351,9 @@ public class ParcelFrame extends JFrame {
         typeMailButton.setEnabled(false);
         typeItemButton.setEnabled(false);
 
-        this.leftPanel.previewID.setText(parcelTemp.parcelId);
-        this.leftPanel.previewStatus.setText("" + template.checkProgress());
-        this.leftPanel.previewMode.setText("" + template.delivery.getMode());
+        leftPanel.previewID.setText(parcelTemp.parcelId);
+        leftPanel.previewStatus.setText("" + template.checkProgress());
+        leftPanel.previewMode.setText("" + template.delivery.getMode());
     }
 
     private void pushToCourierController() {
