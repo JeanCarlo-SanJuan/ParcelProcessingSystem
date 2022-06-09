@@ -33,8 +33,11 @@ public class Courier {
         return this.delivery.getState();
     }
 
+    public static Courier sample() {
+        return  new Courier(Parcel.sample(), new Delivery(Mode.AIRPLANE));
+    }
     public static void main(String[] args) {
-        Courier c =  new Courier(Parcel.sample(), new Delivery(Mode.AIRPLANE));
+        Courier c = sample();
         Scanner sc = new Scanner(System.in);
         while(c.delivery.getState() != Status.DELIVERED) {
             System.out.print("Press enter: ");

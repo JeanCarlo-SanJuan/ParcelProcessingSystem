@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class CourierFrame extends JFrame {
-    public CourierFrame(Courier courier, BufferedImage image) {
+    public CourierFrame(Courier courier) {
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
         GridBagConstraints gc = new GridBagConstraints();
@@ -79,7 +79,7 @@ public class CourierFrame extends JFrame {
         info3.setVerticalAlignment(SwingConstants.NORTH);
         panel.add(info3, gc);
         
-        //Todo: paint image
+        //TODO: paint image
 
         this.add(panel);
         this.setTitle("Courier");
@@ -87,9 +87,9 @@ public class CourierFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-        /* CourierFrame c = new CourierFrame();
+        CourierFrame c = new CourierFrame(Courier.sample());
         c.setLocationRelativeTo(null);
         c.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        c.setVisible(true); */
+        c.setVisible(true);
     }
 }
