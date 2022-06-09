@@ -19,6 +19,8 @@ public class LoginFrame extends JFrame implements ActionListener {
 
     public LoginFrame(AccountController ac) {
         this.AC = ac;
+
+        //Configure component children
         usernameLabel.setBounds(50, 100, 75, 25);
         passwordLabel.setBounds(50, 150, 75, 25);
 
@@ -31,10 +33,13 @@ public class LoginFrame extends JFrame implements ActionListener {
         loginButton.setBounds(125, 200, 100, 25);
         loginButton.addActionListener(this);
         loginButton.setActionCommand("login");
+        this.getRootPane().setDefaultButton(loginButton); //Allows the enter key to attempt a login.
 
         resetButton.setBounds(225, 200, 100, 25);
         resetButton.addActionListener(this);
         resetButton.setActionCommand("reset");
+
+        //Add children
         add(usernameLabel);
         add(passwordLabel);
         add(messageLabel);
@@ -42,6 +47,8 @@ public class LoginFrame extends JFrame implements ActionListener {
         add(passwordField);
         add(loginButton);
         add(resetButton);
+
+        //Configure self
         setSize(420, 420);
         setLayout(null);
         setVisible(true);
