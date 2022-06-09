@@ -32,6 +32,6 @@ public class Courier {
     }
 
     public static void main(String[] args) {
-        Courier c =  new Courier(p);
+        Courier c =  new Courier(Parcel.sample());
     }
 }

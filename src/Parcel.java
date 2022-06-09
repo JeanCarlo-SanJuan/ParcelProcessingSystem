@@ -1,6 +1,8 @@
+import java.util.Arrays;
+
 public class Parcel {
     public final Dimension3D dimension;
-    public final ContactData sender, receiver;
+    public final Addresses sender, receiver;
 
     public final String 
         name,
@@ -11,7 +13,7 @@ public class Parcel {
         weight,
         tax_factor;
 
-    public Parcel(String name, String desc, double price, double weight, double tax_factor, Dimension3D dimension3d, ContactData sender, ContactData receiver) {
+    public Parcel(String name, String desc, double price, double weight, double tax_factor, Dimension3D dimension3d, Addresses sender, Addresses receiver) {
         this.name = name;
         this.description = desc;
         this.price = price;
@@ -23,9 +25,13 @@ public class Parcel {
     }
 
     static Parcel sample() {
-        return Parcel(
-            "Sample", "a sample parcel", 100.0, 15.0, 0, new Dimension3D(10, 10, 10),
-            new ContactData(),
-        )
+        String[]ss = {"Line 1", "Line 2", "Line 3", "Line 4"};
+        String[]rs = {"Line 01", "Line 02", "Line 03", "Line 04"};
+        return new Parcel(
+            "Sample", "a sample parcel", 
+            100.0, 15.0, 0.0, 
+            new Dimension3D(10, 10, 10),
+            new Addresses(ss), new Addresses(rs)
+        );
     }
 }
