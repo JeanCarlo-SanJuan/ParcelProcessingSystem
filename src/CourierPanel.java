@@ -16,6 +16,8 @@ public class CourierPanel extends Panel {
         title.setOpaque(true);
         this.add(title);
 
+        this.add(Box.createRigidArea(new Dimension(0, 20)));
+
         JLabel col1 = new JLabel("Parcel ID");
         col1.setFont(new Font("Tahoma", Font.BOLD,15));
         col1.setBackground(Color.LIGHT_GRAY);
@@ -26,6 +28,8 @@ public class CourierPanel extends Panel {
         previewID.setOpaque(true);
         this.add(previewID);
 
+        this.add(Box.createRigidArea(new Dimension(0, 20)));
+
         JLabel col2 = new JLabel("Status");
         col2.setFont(new Font("Tahomar", Font.BOLD,15));
         col2.setBackground(Color.LIGHT_GRAY);
@@ -35,6 +39,8 @@ public class CourierPanel extends Panel {
         previewStatus.setText("" + courier.checkProgress());
         previewStatus.setOpaque(true);
         this.add(previewStatus);
+
+        this.add(Box.createRigidArea(new Dimension(0, 20)));
 
         JLabel col3 = new JLabel("Mode");
         col3.setBackground(Color.LIGHT_GRAY);
