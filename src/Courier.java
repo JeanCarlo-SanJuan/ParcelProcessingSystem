@@ -4,27 +4,29 @@ import java.util.Scanner;
 public class Courier {
     private Delivery delivery;
     private Parcel parcel;
-    private Date startTime;
+    private Date startTime = new Date();
     private final int SECOND = 1000;
     public Courier(Parcel p, Delivery d) {
         this.parcel = p;
         this.delivery = d;
-        this.startTime = new Date();
     }
 
     public Courier(Parcel p) {
         this.parcel = p;
         this.delivery = new Delivery();
-        this.startTime = new Date();
     }
 
+    /**
+     * Mutates the delivery state based on an arbitrary value.
+     */
     public Status checkProgress() {
         long timePassed = (new Date()).getTime() - this.startTime.getTime();
-
-        if (timePassed > 15 * SECOND * this.delivery.getSpeed()) {
+        
+        int spdAsSeconds = SECOND * this.delivery.getSpeed();
+        if (timePassed > 15 * spdAsSeconds) {
             this.delivery.setState(Status.DELIVERED);
         } else
-        if (timePassed > 5 * SECOND * this.delivery.getSpeed()) {
+        if (timePassed > 5 * spdAsSeconds) {
             this.delivery.setState(Status.ON_DELIVERY);
         }
 
@@ -34,13 +36,12 @@ public class Courier {
     public static void main(String[] args) {
         Courier c =  new Courier(Parcel.sample(), new Delivery(Mode.AIRPLANE));
         Scanner sc = new Scanner(System.in);
-        while(true) {
+        while(c.delivery.getState() != Status.DELIVERED) {
             System.out.print("Press enter: ");
             sc.nextLine();
             System.out.println(
                 c.checkProgress()
             );
         }
-
     }
 }

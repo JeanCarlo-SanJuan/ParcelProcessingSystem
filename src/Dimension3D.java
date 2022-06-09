@@ -13,6 +13,6 @@ public class Dimension3D {
     }
 
     public String toString() {
-        return "Length: " + this.length+ "\nWidth: " + this.width + "\nHeight: " + this.height;
+        return "Dimensions(" + this.length + ", " + this.width + ", " + this.height + ")";
     }
 }
