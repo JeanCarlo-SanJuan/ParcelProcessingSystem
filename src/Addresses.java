@@ -1,3 +1,8 @@
+/**
+ * @summary A wrapper for an array with a fixed length used to hold addresses.
+ * @author Sons Justin Garcia
+ * @author Jean Carlo M. San Juan
+ */
 public class Addresses {
     public static final int requiredLen = 4;
     public String[] address = new String[requiredLen];

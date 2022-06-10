@@ -5,6 +5,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+/**
+ * @author Ashleigh Nelson L. Milana
+ * @author Jean Carlo M. San Juan
+ * @author A GUI to the instance of the AccountController.
+ */
 public class LoginFrame extends JFrame implements ActionListener 
 {
     private JButton loginButton = new JButton("Login");

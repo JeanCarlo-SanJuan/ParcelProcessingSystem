@@ -3,6 +3,11 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
+/**
+ * @summary A GUI for creating or viewing parcels.
+ * @author Sons Justin Garcia
+ * @author Jean Carlo M. San Juan.
+ */
 public class ParcelFrame extends JFrame {
     private final int GAPS = 10;
     private final String textSender = "Sender";

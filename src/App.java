@@ -1,6 +1,13 @@
 import javax.swing.JFrame;
 import java.awt.EventQueue;
 
+
+/**
+ * @summary The entry point GUI.
+ * @author Antonio Gabriel Abelardo
+ * @author Sons Justin Garcia
+ * @author Jean Carlo M. San Juan.
+ */
 public class App {
     private static JFrame currentFrame;
     private static AccountController AC = new AccountController();

@@ -1,14 +1,13 @@
-/**
- * ITE 012 - Java Project
- *
- * @author Ashleigh Nelson L. Milana
- * @version Prototype
- */
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * @author Ashleigh Nelson L. Milana
+ * @author Jean Carlo M. San Juan
+ * @summary A singleton that handles user verification.
+ */
 public class AccountController
 {
     HashMap <String, String> credentials = new HashMap <String, String>();

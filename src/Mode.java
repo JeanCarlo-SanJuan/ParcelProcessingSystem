@@ -1,5 +1,8 @@
 
-//An enum treated as an ordered value to determine the speed of a delivery. Airplane being the fastest.
+/**
+ * @summary An ordered enumumeration of the possible delivery methods used by a courier. Airplane being the fastest.
+ * @author Jean Carlo M. San Juan
+ */
 public enum Mode {
     AIRPLANE,
     BOAT,

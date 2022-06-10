@@ -1,5 +1,10 @@
 import java.util.UUID;
 
+/**
+ * @summary A structure that holds relevant information about a parcel.
+ * @author Sons Justin Garcia
+ * @author Jean Carlo M. San Juan.
+ */
 public class Parcel {
     public Dimension3D dimension;
     public Addresses sender, receiver;

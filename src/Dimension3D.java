@@ -1,5 +1,7 @@
 /**
- * An immutable class for a dimension similar to the one provided by java.awt but includes a third dimension
+ * @summary An immutable class representing values of three dimensional space.
+ * @author Sons Justin Garcia
+ * @author Jean Carlo M. San Juan.
  */
 public class Dimension3D {
     public final double length;

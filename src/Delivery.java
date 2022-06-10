@@ -1,3 +1,8 @@
+
+/**
+ * @summary A class that holds the relevant info about a delivery.
+ * @author Jean Carlo M. San Juan
+ */
 public class Delivery {
     private Mode mode;
     private Status state;

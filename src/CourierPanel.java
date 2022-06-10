@@ -5,6 +5,11 @@ import javax.swing.BoxLayout;
 import java.awt.Font;
 import java.awt.Dimension;
 
+/**
+ * @author Lorenzo Trinidad
+ * @author Jean Carlo M. San Juan
+ * @summary A GUI of the relevant information about a delivery's progress.
+ */
 public class CourierPanel extends JPanel {
     //We need the frame(parent) to be able to directly change the text
     public JLabel previewID = new JLabel("");

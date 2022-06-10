@@ -1,5 +1,9 @@
 import java.util.ArrayList;
-
+/**
+ * @author A singleton that manages access the list of Couriers created during the app's runtime.
+ * @author Sons Justin Garcia
+ * @author Jean Carlo M. San Juan
+ */
 public class CourierController {
     private ArrayList<Courier> couriers = new ArrayList<Courier>();
 

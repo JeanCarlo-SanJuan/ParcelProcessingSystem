@@ -1,6 +1,10 @@
 import java.util.Date;
 import java.util.Scanner;
 
+/**
+ * @summary A runner class representing a person who works as a courier.
+ * @author Jean Carlo M. San Juan
+ */
 public class Courier {
     public Delivery delivery;
     public final Parcel parcel;
@@ -18,6 +22,7 @@ public class Courier {
 
     /**
      * Mutates the delivery state based on an arbitrary value.
+     * @summary Simulates the timeline of a parcel being delivered
      */
     public Status checkProgress() {
         long timePassed = (new Date()).getTime() - this.startTime.getTime();
