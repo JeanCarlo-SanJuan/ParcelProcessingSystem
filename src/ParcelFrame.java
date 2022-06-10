@@ -304,17 +304,22 @@ public class ParcelFrame extends JFrame {
                     return;
                 }
 
-                //TODO: Show live preview
+                // TODO: Show live preview
                 courierController.assignCourier(parcel);
                 self.dispose();
             }
         });
-        classifyButton.setPreferredSize(new Dimension(175, 40));
+        classifyButton.setPreferredSize(new Dimension(100, 40));
         buttonPanel.add(classifyButton);
 
-        JButton printButton = new JButton("Print");
-        printButton.setPreferredSize(new Dimension(175, 40));
-        buttonPanel.add(printButton);
+        JButton previewButton = new JButton("Preview");
+        previewButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                    leftPanel.previewMode.setText("" + courierController.calculatePriority(parcel));
+                }
+            });
+        previewButton.setPreferredSize(new Dimension(100, 40));
+        buttonPanel.add(previewButton);
 
         whereTo.add(buttonPanel, BorderLayout.PAGE_END);
     }

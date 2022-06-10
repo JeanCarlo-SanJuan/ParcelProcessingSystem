@@ -41,6 +41,6 @@ public class App {
     }
 
     public static Courier createSampleCourier() {
-        return new Courier(createSampleParcel(), new Delivery(Mode.AIRPLANE, Status.PICKUP));
+        return new Courier(createSampleParcel(), new Delivery(Mode.VEHICLE, Status.PICKUP));
     }
 }
