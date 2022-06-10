@@ -25,4 +25,40 @@ public class CourierController {
 
         return null;
     }
+
+    /**
+     * Determines the delivery priority of a parcel based on arbitrary calculations.
+     * @param p
+     */
+    public Mode calculatePriority(Parcel p) {
+        int bias = 0;
+        bias += p.getPrice();
+
+        if (p.getDescription() != null && p.getType() == "mail") {
+            bias += p.getDescription().length();
+        }
+
+        if (p.getDimension() != null) {
+            double v = p.getDimension().volume;
+            if (v > 500) {
+                bias += 5;
+            }
+            if (v > 150) {
+                bias += 3;
+            } else if (v > 50) {
+                bias += 1;
+            }
+        }
+
+        
+        final Mode[] options = Mode.values();
+        return options[bias % options.length];
+    }
+
+    public void assignCourier(Parcel p) {
+        this.push(
+            new Courier(
+                p, new Delivery(this.calculatePriority(p), Status.PICKUP))
+        );
+    }
 }

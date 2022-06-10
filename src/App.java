@@ -14,6 +14,7 @@ public class App {
     private static CourierController CC = new CourierController();
 
     public static void main(String[] args) {
+        CC.push(createSampleCourier());
         EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     try {

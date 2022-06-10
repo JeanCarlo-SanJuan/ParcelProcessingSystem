@@ -132,10 +132,14 @@ public class MainFrame extends JFrame {
         }
 
         //Sets a default option
-        buttonsGroup
+        try {
+            buttonsGroup
             .getElements()
             .nextElement()
             .setSelected(true);
+        } catch(Exception e) {
+            System.out.println("Empty list");
+        }
     }
     
     private void refreshParcels() {

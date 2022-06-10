@@ -6,7 +6,7 @@ import java.util.UUID;
  * @author Jean Carlo M. San Juan.
  */
 public class Parcel {
-    public Dimension3D dimension;
+    private Dimension3D dimension;
     public Addresses sender, receiver;
     public final String ID = UUID.randomUUID().toString();
 
@@ -18,8 +18,8 @@ public class Parcel {
         isPerishable,
         isTaxable;
     private double
-        price,
-        weight,
+        price = 0,
+        weight = 0,
         tax_factor;
 
     public Parcel() {

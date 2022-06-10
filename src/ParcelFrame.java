@@ -189,8 +189,9 @@ public class ParcelFrame extends JFrame {
 
         createRightFields(rightPanel);
 
-        if (template == null)
+        if (template == null) {
             createFinishButtons(rightPanel);
+        }
 
         add(rightPanel);
     }
@@ -253,6 +254,7 @@ public class ParcelFrame extends JFrame {
         whereTo.add(fieldsPanel, BorderLayout.PAGE_START);
     }
 
+
     private void createFinishButtons(JPanel whereTo) {
         JPanel buttonPanel = new JPanel();
 
@@ -302,7 +304,8 @@ public class ParcelFrame extends JFrame {
                     return;
                 }
 
-                pushToCourierController();
+                //TODO: Show live preview
+                courierController.assignCourier(parcel);
                 self.dispose();
             }
         });
@@ -334,9 +337,9 @@ public class ParcelFrame extends JFrame {
         parcelRemarksTextArea.setText(parcelTemp.getDescription());
         valueSpinner.setValue(parcelTemp.getPrice());
         weightSpinner.setValue(parcelTemp.getWeight());
-        lengthSpinner.setValue(parcelTemp.dimension.length);
-        widthSpinner.setValue(parcelTemp.dimension.width);
-        heightSpinner.setValue(parcelTemp.dimension.height);
+        lengthSpinner.setValue(parcelTemp.getDimension().length);
+        widthSpinner.setValue(parcelTemp.getDimension().width);
+        heightSpinner.setValue(parcelTemp.getDimension().height);
 
         if (parcelTemp.getType() == "Mail") {
             typeMailButton.setSelected(true);
@@ -361,9 +364,5 @@ public class ParcelFrame extends JFrame {
         leftPanel.previewID.setText(parcelTemp.ID);
         leftPanel.previewStatus.setText("" + template.checkProgress());
         leftPanel.previewMode.setText("" + template.delivery.getMode());
-    }
-
-    private void pushToCourierController() {
-        courierController.push(new Courier(parcel, new Delivery()));
     }
 }
