@@ -3,16 +3,16 @@ import java.util.UUID;
 public class Parcel {
     public Dimension3D dimension;
     public Addresses sender, receiver;
-    public String ID = UUID.randomUUID().toString();
+    public final String ID = UUID.randomUUID().toString();
 
-    public String 
+    private String 
         name,
         type,
         description;
-    public boolean
+    private boolean
         isPerishable,
         isTaxable;
-    public double
+    private double
         price,
         weight,
         tax_factor;
@@ -56,14 +56,6 @@ public class Parcel {
 
     public void setReceiver(Addresses receiver) {
         this.receiver = receiver;
-    }
-
-    public String getID() {
-        return this.ID;
-    }
-
-    public void setID(String ID) {
-        this.ID = ID;
     }
 
     public String getName() {

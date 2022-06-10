@@ -39,19 +39,19 @@ public class ParcelFrame extends JFrame {
 
     class TypeHandler implements ActionListener {
         public void actionPerformed(ActionEvent evt) {
-            parcel.type = evt.getActionCommand();
+            parcel.setType(evt.getActionCommand()); 
         }
     }
 
     class TaxableHandler implements ActionListener {
         public void actionPerformed(ActionEvent evt) {
-            parcel.isTaxable = evt.getActionCommand() == "Yes";
+            parcel.setIsTaxable(evt.getActionCommand() == "Yes"); 
         }
     }
 
     class PerishableHandler implements ActionListener {
         public void actionPerformed(ActionEvent evt) {
-            parcel.isPerishable = evt.getActionCommand() == "Yes";
+            parcel.setIsPerishable(evt.getActionCommand() == "Yes"); 
         }
     }
 
@@ -271,24 +271,27 @@ public class ParcelFrame extends JFrame {
                     senderAddressLines[i] = senderText;
                     recipientAddressLines[i] = recipientText;
                 }
-                parcel.sender = new Addresses(senderAddressLines);
-                parcel.receiver = new Addresses(recipientAddressLines);
+                parcel.setSender(new Addresses(senderAddressLines));
+                parcel.setReceiver(new Addresses(recipientAddressLines));
 
-                parcel.name = parcelNameTextField.getText();
-                if (parcel.name.isEmpty()) {
+                parcel.setName(parcelNameTextField.getText()); 
+                if (parcel.getName().isEmpty()) {
                     JOptionPane.showMessageDialog(self, "Parcel name cannot be empty", "Warning",
                             JOptionPane.WARNING_MESSAGE);
                     return;
                 }
-                parcel.description = parcelRemarksTextArea.getText();
-                parcel.price = (double) valueSpinner.getValue();
-                parcel.weight = (double) weightSpinner.getValue();
-                parcel.dimension = new Dimension3D(
+
+                parcel.setDescription(parcelRemarksTextArea.getText());
+                parcel.setPrice((double) valueSpinner.getValue());                
+                parcel.setWeight((double) weightSpinner.getValue());
+                parcel.setDimension(
+                    new Dimension3D(
                         (double) lengthSpinner.getValue(),
                         (double) widthSpinner.getValue(),
-                        (double) heightSpinner.getValue());
+                        (double) heightSpinner.getValue()
+                ));
 
-                if (parcel.type == null) {
+                if (parcel.getType() == null) {
                     JOptionPane.showMessageDialog(self, "No parcel type selected", "Warning",
                             JOptionPane.WARNING_MESSAGE);
                     return;
@@ -330,7 +333,7 @@ public class ParcelFrame extends JFrame {
         widthSpinner.setValue(parcelTemp.dimension.width);
         heightSpinner.setValue(parcelTemp.dimension.height);
 
-        if (parcelTemp.type == "Mail") {
+        if (parcelTemp.getType() == "Mail") {
             typeMailButton.setSelected(true);
         } else {
             typeItemButton.setSelected(true);
@@ -350,7 +353,7 @@ public class ParcelFrame extends JFrame {
         typeMailButton.setEnabled(false);
         typeItemButton.setEnabled(false);
 
-        leftPanel.previewID.setText(parcelTemp.getID());
+        leftPanel.previewID.setText(parcelTemp.ID);
         leftPanel.previewStatus.setText("" + template.checkProgress());
         leftPanel.previewMode.setText("" + template.delivery.getMode());
     }

@@ -119,9 +119,9 @@ public class MainFrame extends JFrame {
         ArrayList<Courier> couriers = courierController.getCouriers();
         for (int i = 0; i < couriers.size(); i++) {
             Parcel parcel = couriers.get(i).parcel;
-            var parcelButton = new JRadioButton((i + 1) + ". " + parcel.getID());
+            var parcelButton = new JRadioButton((i + 1) + ". " + parcel.ID);
             parcelButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-            parcelButton.setActionCommand(parcel.getID());
+            parcelButton.setActionCommand(parcel.ID);
             buttonsPanel.add(parcelButton);
             buttonsGroup.add(parcelButton);
         }
