@@ -1,5 +1,4 @@
 import java.util.Date;
-import java.util.Scanner;
 
 /**
  * @summary A runner class representing a person who works as a courier.
