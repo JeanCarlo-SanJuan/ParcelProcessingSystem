@@ -26,7 +26,7 @@ public class Parcel {
         //Do nothing
     }
 
-    public Parcel(String name, String desc, double price, double weight, double tax_factor, Dimension3D dimension3d, Addresses sender, Addresses receiver, boolean isTaxable, boolean isPerishable) {
+    public Parcel(String name, String desc, double price, double weight, double tax_factor, Dimension3D dimension3d, Addresses sender, Addresses receiver, boolean isTaxable, boolean isPerishable, String type) {
         this.name = name;
         this.description = desc;
         this.price = price;
@@ -37,6 +37,7 @@ public class Parcel {
         this.receiver = receiver;
         this.isTaxable = isTaxable;
         this.isPerishable =isPerishable;
+        this.type = type;
     }
 
     public Dimension3D getDimension() {
