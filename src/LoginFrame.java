@@ -6,9 +6,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 /**
+ * @summary A GUI to the instance of the AccountController.
  * @author Ashleigh Nelson L. Milana
  * @author Jean Carlo M. San Juan
- * @author A GUI to the instance of the AccountController.
  */
 public class LoginFrame extends JFrame implements ActionListener 
 {
