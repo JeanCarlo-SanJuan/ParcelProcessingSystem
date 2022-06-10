@@ -5,6 +5,6 @@
  */
 public enum Mode {
     AIRPLANE,
-    BOAT,
     VEHICLE,
+    MOTORCYCLE
 };
