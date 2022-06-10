@@ -31,11 +31,20 @@ public class CourierController {
      * @param p
      */
     public Mode calculatePriority(Parcel p) {
-        int bias = 0;
-        bias += p.getPrice();
+        int bias = (int) Math.random() * 100;
 
-        if (p.getDescription() != null && p.getType() == "mail") {
-            bias += p.getDescription().length();
+        if (p.getPrice() < 100) {
+            bias += 2;
+        } else if (p.getPrice() < 1000) {
+            bias += 1;
+        } 
+
+        if (p.getDescription() != null && p.getType() == "Mail") {
+            if (p.getDescription().length() < 10) {
+                bias += 1;
+            } else {
+                bias += 2;
+            }
         }
 
         if (p.getDimension() != null) {
