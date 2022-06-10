@@ -1,7 +1,6 @@
 import javax.swing.JFrame;
 import java.awt.EventQueue;
 
-
 /**
  * @summary The entry point GUI.
  * @author Antonio Gabriel Abelardo
@@ -29,14 +28,15 @@ public class App {
     }
 
     public static Parcel createSampleParcel() {
-        String[]ss = {"Line 1", "Line 2", "Line 3", "Line 4"};
-        String[]rs = {"Line 01", "Line 02", "Line 03", "Line 04"};
+        
+        String[]ss = {"ACM headquarters", "1601 Broadway, 10th Floor New York, NY 10019-7434", "None", "None"};
+        String[]rs = {"938 Aurora Boulevard, Cubao, Quezon City", "363 Pascual Casal St", "1338 Arlegui St., Quiapo Manila", "None"};
         return new Parcel(
-            "Sample", "a sample parcel",
-            100.0, 15.0, 0.0,
-            new Dimension3D(10, 10, 10),
+            "Notice on accreditation", "Contains information about the accreditation results.",
+            500.0, 0.1, 0.0,
+            new Dimension3D(22.0, 28.0, 2.0),
             new Addresses(ss), new Addresses(rs),
-            false, false
+            false, false, "Mail"
         );
     }
 
