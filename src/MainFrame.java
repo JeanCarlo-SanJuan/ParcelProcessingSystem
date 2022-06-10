@@ -12,7 +12,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 /**
- * @author A GUI to an instance of the CourierController.
+ * @summary A GUI to an instance of the CourierController.
  * @author Antonio Gabriel Abelardo
  * @author Sons Justin Garcia
  * @author Jean Carlo M. San Juan.
