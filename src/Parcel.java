@@ -134,16 +134,4 @@ public class Parcel {
     public void setTax_factor(double tax_factor) {
         this.tax_factor = tax_factor;
     }
-
-    static Parcel sample() {
-        String[]ss = {"Line 1", "Line 2", "Line 3", "Line 4"};
-        String[]rs = {"Line 01", "Line 02", "Line 03", "Line 04"};
-        return new Parcel(
-            "Sample", "a sample parcel", 
-            100.0, 15.0, 0.0, 
-            new Dimension3D(10, 10, 10),
-            new Addresses(ss), new Addresses(rs), 
-            false, false
-        );
-    }
 }

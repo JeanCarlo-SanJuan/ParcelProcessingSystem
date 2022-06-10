@@ -145,18 +145,4 @@ public class MainFrame extends JFrame {
         revalidate();
         repaint();
     }
-    
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    try {
-                        var courierController = new CourierController();
-                        var mainFrame = new MainFrame(courierController);
-                        mainFrame.setVisible(true);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-    }
 }

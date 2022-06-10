@@ -81,7 +81,7 @@ public class ParcelFrame extends JFrame {
     }
 
     private void createLeftPanel() {
-        this.leftPanel = new CourierPanel(Courier.sample(),
+        this.leftPanel = new CourierPanel(App.createSampleCourier(),
             template == null ? "Preview" : "Live view"
         );
         add(leftPanel);

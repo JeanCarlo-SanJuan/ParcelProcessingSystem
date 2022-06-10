@@ -37,19 +37,4 @@ public class Courier {
 
         return this.delivery.getState();
     }
-
-    public static Courier sample() {
-        return  new Courier(Parcel.sample(), new Delivery(Mode.AIRPLANE, Status.PICKUP));
-    }
-    public static void main(String[] args) {
-        Courier c = sample();
-        Scanner sc = new Scanner(System.in);
-        while(c.delivery.getState() != Status.DELIVERED) {
-            System.out.print("Press enter: ");
-            sc.nextLine();
-            System.out.println(
-                c.checkProgress()
-            );
-        }
-    }
 }
