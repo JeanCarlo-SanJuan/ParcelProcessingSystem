@@ -13,6 +13,8 @@ public class App {
 			public void run() {
 				try {
 					currentFrame = new LoginFrame(AC, CC);
+					currentFrame.setVisible(true);
+					currentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

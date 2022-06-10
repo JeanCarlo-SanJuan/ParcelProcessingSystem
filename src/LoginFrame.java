@@ -63,8 +63,6 @@ public class LoginFrame extends JFrame implements ActionListener
         // Configure self
         setSize(420, 420);
         setLayout(null);
-        setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Login");
     }
 
@@ -82,11 +80,14 @@ public class LoginFrame extends JFrame implements ActionListener
 
     private void onLoginSuccess() 
     {
+        setVisible(false);
+
         messageLabel.setForeground(Color.GREEN);
         messageLabel.setText("Sign In Successful!");
 
-        setVisible(false);
         MainFrame mainFrame = new MainFrame(CC);
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.setVisible(true);
 
         mainFrame.addWindowListener(new WindowAdapter() 
         {
@@ -99,7 +100,6 @@ public class LoginFrame extends JFrame implements ActionListener
                 messageLabel.setForeground(Color.BLUE);
             }
         });
-        mainFrame.setVisible(true);
     }
     
     @Override

@@ -20,11 +20,10 @@ public class MainFrame extends JFrame {
     public MainFrame(CourierController courierController) {
         this.courierController = courierController;
         this.initializeComponents();
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     private void initializeComponents() {
-        setTitle("Parcel Input Form");
+        setTitle("Parcel manager");
         setPreferredSize(new Dimension(1024, 576));
 
         var contentPane = getContentPane();
