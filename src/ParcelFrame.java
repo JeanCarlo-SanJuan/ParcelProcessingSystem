@@ -259,7 +259,6 @@ public class ParcelFrame extends JFrame {
         JPanel buttonPanel = new JPanel();
 
         JButton classifyButton = new JButton("Classify");
-        ParcelFrame self = this;
         classifyButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 ParcelFrame.this.onClassify();
