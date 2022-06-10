@@ -1,7 +1,11 @@
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import java.awt.Font;
+import java.awt.Dimension;
 
-public class CourierPanel extends Panel {
+public class CourierPanel extends JPanel {
     //We need the frame(parent) to be able to directly change the text
     public JLabel previewID = new JLabel("");
     public JLabel previewStatus = new JLabel("");
